@@ -8,10 +8,16 @@ export default async function ProductDetail({ params }: { params: Promise<{ id: 
   const { id } = await params;
   
   // Try to fetch from DB first
-  let product = await prisma.product.findUnique({
-    where: { id: parseInt(id) },
-    include: { images: true }
-  });
+  let product = null;
+  try {
+    product = await prisma.product.findUnique({
+      where: { id: parseInt(id) },
+      include: { images: true }
+    });
+  } catch (error) {
+    console.error("Prisma error:", error);
+    // Ignore error, will fallback to dummy data
+  }
 
   // Fallback to dummy data for preview if DB is empty
   if (!product) {

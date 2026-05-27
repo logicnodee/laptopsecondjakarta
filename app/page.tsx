@@ -3,11 +3,17 @@ import prisma from "@/lib/prisma";
 import Navbar from "@/components/Navbar";
 
 export default async function Home() {
-  const products = await prisma.product.findMany({
-    orderBy: { createdAt: "desc" },
-    include: { images: true },
-    take: 4,
-  });
+  let products: any[] = [];
+  try {
+    products = await prisma.product.findMany({
+      orderBy: { createdAt: "desc" },
+      include: { images: true },
+      take: 4,
+    });
+  } catch (error) {
+    console.error("Prisma error:", error);
+    // Ignore error, will fallback to dummy data
+  }
 
   // Dummy products if db is empty for preview
   const displayProducts = products.length > 0 ? products : [

@@ -22,13 +22,20 @@ export default async function ProductsPage({ searchParams }: { searchParams: Pro
   if (sort === "price_asc") orderByClause = { price: "asc" };
   else if (sort === "price_desc") orderByClause = { price: "desc" };
 
-  const products = await prisma.product.findMany({
-    where: whereClause,
-    orderBy: orderByClause,
-    include: { images: true },
-  });
+  let products: any[] = [];
+  let totalProductsInDb = 0;
 
-  const totalProductsInDb = await prisma.product.count();
+  try {
+    products = await prisma.product.findMany({
+      where: whereClause,
+      orderBy: orderByClause,
+      include: { images: true },
+    });
+    totalProductsInDb = await prisma.product.count();
+  } catch (error) {
+    console.error("Prisma error:", error);
+    // Ignore error, will fallback to dummy data
+  }
 
   // Dummy products if db is empty for preview
   let displayProducts = totalProductsInDb > 0 ? products : [
