@@ -22,8 +22,9 @@ export default async function ProductDetail({ params }: { params: Promise<{ id: 
   // Fallback to dummy data for preview if DB is empty
   if (!product) {
     const dummyProducts = [
-      { id: 1, title: "Asus ROG Zephyrus G14", brand: "Asus", price: 14500000, ram: "16GB", storage: "1TB SSD", processor: "Ryzen 9 5900HS", condition: "Mulus 95%", status: "Available", description: "Laptop gaming super tipis dan kencang. Baterai awet untuk ukuran laptop gaming. Kelengkapan fullset original. Cocok untuk gaming berat dan rendering.", images: [{ url: "/merk/asus/asus.png" }] },
+      { id: 1, title: "Asus ROG Zephyrus G14", brand: "Asus", price: 14500000, ram: "16GB", storage: "1TB SSD", processor: "Ryzen 9 5900HS", condition: "Mulus 95%", status: "Available", description: "Laptop gaming super tipis dan kencang. Baterai awet untuk ukuran laptop gaming. Kelengkapan fullset original. Cocok untuk gaming berat dan rendering.", images: [{ url: "/merk/asus/asus.png" }, { url: "/merk/asus/asus2.png" }] },
       { id: 2, title: "Lenovo ThinkPad T490", brand: "Lenovo", price: 6200000, ram: "8GB", storage: "512GB SSD", processor: "Intel Core i5-8365U", condition: "Lecet Pemakaian", status: "Available", description: "Laptop bisnis legendaris. Keyboard sangat nyaman, body kokoh standar militer. Minus lecet pemakaian di sudut. Mesin 100% normal.", images: [{ url: "/merk/lenovo/lenovo.png" }] },
+      { id: 3, title: "Asus Vivobook 14", brand: "Asus", price: 5500000, ram: "8GB", storage: "512GB SSD", processor: "Intel Core i3-1115G4", condition: "Mulus 90%", status: "Available", description: "Laptop pelajar dan mahasiswa. Ringan, tipis, baterai awet, dan sudah SSD NVMe.", images: [{ url: "/merk/asus/asus2.png" }] },
       { id: 4, title: "HP Pavilion Gaming 15", brand: "HP", price: 8500000, ram: "16GB", storage: "512GB SSD", processor: "Intel Core i7-9750H", condition: "Normal", status: "Available", description: "Laptop gaming budget. Sudah upgrade RAM ke 16GB. Layar IPS jernih. Ada backlit keyboard.", images: [{ url: "/merk/hp/hp.png" }] },
     ];
     // @ts-ignore
