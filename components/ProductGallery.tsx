@@ -16,7 +16,7 @@ export default function ProductGallery({ images }: { images: { url: string }[] }
   return (
     <div className="flex flex-col gap-4 w-full">
       {/* Main Image */}
-      <div className="clean-card overflow-hidden aspect-square w-full max-w-[360px] mx-auto relative bg-white border border-slate-100">
+      <div className="overflow-hidden aspect-square w-full relative bg-white border-y border-slate-100">
         <img 
           src={images[activeIndex].url} 
           alt={`Product image ${activeIndex + 1}`} 
@@ -26,7 +26,7 @@ export default function ProductGallery({ images }: { images: { url: string }[] }
 
       {/* Thumbnails */}
       {images.length > 1 && (
-        <div className="flex gap-3 overflow-x-auto pb-2 scrollbar-hide">
+        <div className="flex gap-3 overflow-x-auto pb-2 px-4 lg:px-8 scrollbar-hide">
           {images.map((img, idx) => (
             <button
               key={idx}

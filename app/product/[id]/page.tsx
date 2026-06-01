@@ -54,7 +54,7 @@ export default async function ProductDetail({ params }: { params: Promise<{ id: 
     <div className="flex flex-col min-h-screen">
       <Navbar />
       
-      <div className="container mx-auto px-4 lg:px-8 py-4 pb-28 flex-grow">
+      <div className="container mx-auto px-4 lg:px-8 py-4 pb-36 flex-grow">
         <nav className="py-1 mb-4">
           <Link href="/" className="inline-flex items-center gap-2 text-slate-500 hover:text-blue-600 transition-colors font-medium text-xs">
             &larr; Kembali ke Katalog
@@ -62,8 +62,10 @@ export default async function ProductDetail({ params }: { params: Promise<{ id: 
         </nav>
 
         <div className="flex flex-col gap-6 mt-1">
-        {/* Product Image Gallery */}
-        <ProductGallery images={product.images || []} />
+        {/* Product Image Gallery Edge-to-Edge */}
+        <div className="-mx-4 lg:-mx-8">
+          <ProductGallery images={product.images || []} />
+        </div>
 
         {/* Product Info */}
         <div className="flex flex-col">
@@ -115,17 +117,17 @@ export default async function ProductDetail({ params }: { params: Promise<{ id: 
       </div>
       
       {/* Fixed Bottom Action Bar */}
-      <div className="fixed bottom-0 w-full max-w-[600px] bg-white border-t border-slate-200 p-3 flex gap-2 z-50 rounded-t-xl shadow-[0_-10px_15px_-3px_rgba(0,0,0,0.1)]">
-        <button className="flex items-center justify-center border border-slate-300 rounded-lg w-14 h-12 text-slate-600 hover:bg-slate-50 transition-colors shrink-0">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
-          </svg>
-        </button>
-        <Link href={`/checkout/${product.id}`} className="flex-1 flex items-center justify-center bg-[#2b2b2b] hover:bg-black text-white rounded-lg font-semibold text-sm h-12">
-          Beli Sekarang
-        </Link>
-        <a href={waLink} target="_blank" rel="noopener noreferrer" className="flex-1 flex items-center justify-center bg-green-500 hover:bg-green-600 text-white rounded-lg font-semibold text-sm transition-colors h-12">
-          Konsultasi WA
+      <div className="fixed bottom-0 w-full max-w-[600px] bg-white border-t border-slate-200 p-3 flex flex-col gap-2 z-50 rounded-t-xl shadow-[0_-10px_15px_-3px_rgba(0,0,0,0.1)]">
+        <div className="flex gap-2 w-full">
+          <button className="flex-1 flex items-center justify-center border-2 border-slate-200 text-slate-700 hover:bg-slate-50 hover:border-slate-300 rounded-lg font-bold text-sm h-12 transition-colors">
+            + Keranjang
+          </button>
+          <Link href={`/checkout/${product.id}`} className="flex-1 flex items-center justify-center bg-[#2b2b2b] hover:bg-black text-white rounded-lg font-bold text-sm h-12 transition-colors">
+            Beli Sekarang
+          </Link>
+        </div>
+        <a href={waLink} target="_blank" rel="noopener noreferrer" className="w-full flex items-center justify-center bg-green-500 hover:bg-green-600 text-white rounded-lg font-bold text-sm transition-colors h-12">
+          Konsultasi via WhatsApp
         </a>
       </div>
       </div>
