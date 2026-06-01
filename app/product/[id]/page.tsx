@@ -37,7 +37,17 @@ export default async function ProductDetail({ params }: { params: Promise<{ id: 
 
   // Format WhatsApp message
   const waNumber = "62895626752967"; // Nomor WA Admin Baru
-  const waMessage = encodeURIComponent(`Halo, saya tertarik dengan laptop: \n*${product.title}*\nHarga: Rp ${product.price.toLocaleString('id-ID')}\nApakah masih tersedia?`);
+  const waMessage = encodeURIComponent(
+    `Halo Admin Laptop Second Malang, saya tertarik dengan produk berikut:\n\n` +
+    `*${product.title}*\n` +
+    `Harga: Rp ${product.price.toLocaleString('id-ID')}\n` +
+    `Merek: ${product.brand}\n` +
+    `Prosesor: ${product.processor}\n` +
+    `RAM: ${product.ram}\n` +
+    `Storage: ${product.storage}\n` +
+    `Kondisi: ${product.condition}\n\n` +
+    `Apakah laptop ini masih tersedia? Saya ingin berkonsultasi lebih lanjut.`
+  );
   const waLink = `https://wa.me/${waNumber}?text=${waMessage}`;
 
   return (
