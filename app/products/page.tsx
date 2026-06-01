@@ -93,11 +93,11 @@ export default async function ProductsPage({ searchParams }: { searchParams: Pro
                   const isAvailable = product.status === 'Available' || product.status === 'Tersedia';
                   return (
                     <div key={product.id} className="clean-card overflow-hidden flex flex-col group border border-slate-100 bg-white shadow-sm hover:shadow-md transition-shadow">
-                      <div className="h-56 w-full bg-slate-50 relative overflow-hidden flex items-center justify-center p-4">
+                      <div className="aspect-square w-full bg-white relative overflow-hidden flex items-center justify-center">
                         {product.images && product.images.length > 0 ? (
-                          <img src={product.images[0].url} alt={product.title} className="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500" />
+                          <img src={product.images[0].url} alt={product.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                         ) : (
-                          <div className="flex items-center justify-center w-full h-full text-slate-400">No Image</div>
+                          <div className="flex items-center justify-center w-full h-full text-slate-400 text-xs">No Image</div>
                         )}
                         
                         {/* Sold Out Badge (Circle) */}
