@@ -2,13 +2,22 @@ import Link from "next/link";
 import prisma from "@/lib/prisma";
 import Navbar from "@/components/Navbar";
 
-export default async function Home() {
+export default async function Home({
+  searchParams,
+}: {
+  searchParams: Promise<{ brand?: string }>;
+}) {
+  const { brand } = await searchParams;
   let products: any[] = [];
+  
   try {
+    const whereClause = brand ? { brand: { contains: brand } } : {};
+    
     products = await prisma.product.findMany({
+      where: whereClause,
       orderBy: { createdAt: "desc" },
       include: { images: true },
-      take: 4,
+      take: 12, // Take more products since this is the main catalog now
     });
   } catch (error) {
     console.error("Prisma error:", error);
@@ -16,89 +25,109 @@ export default async function Home() {
   }
 
   // Dummy products if db is empty for preview
-  const displayProducts = products.length > 0 ? products : [
+  const allDummyProducts = [
     { id: 1, title: "Asus ROG Zephyrus G14", brand: "Asus", price: 14500000, ram: "16GB", storage: "1TB SSD", processor: "Ryzen 9 5900HS", condition: "Mulus 95%", status: "Available", images: [{ url: "https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=500&q=80" }] },
-    { id: 2, title: "Lenovo ThinkPad T490", brand: "Lenovo", price: 6200000, ram: "8GB", storage: "512GB SSD", processor: "Intel Core i5-8365U", condition: "Lecet Pemakaian", status: "Available", images: [{ url: "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=500&q=80" }] },
+    { id: 2, title: "Lenovo ThinkPad T490", brand: "Lenovo", price: 6200000, ram: "8GB", storage: "512GB SSD", processor: "Intel Core i5-8365U", condition: "Lecet Pemakaian", status: "Sold Out", images: [{ url: "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=500&q=80" }] },
     { id: 3, title: "MacBook Air M1 2020", brand: "Apple", price: 11000000, ram: "8GB", storage: "256GB SSD", processor: "Apple M1", condition: "Like New", status: "Available", images: [{ url: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=500&q=80" }] },
     { id: 4, title: "HP Pavilion Gaming 15", brand: "HP", price: 8500000, ram: "16GB", storage: "512GB SSD", processor: "Intel Core i7-9750H", condition: "Normal", status: "Available", images: [{ url: "https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=500&q=80" }] },
   ];
+
+  const filteredDummy = brand 
+    ? allDummyProducts.filter(p => p.brand.toLowerCase() === brand.toLowerCase())
+    : allDummyProducts;
+
+  const displayProducts = products.length > 0 ? products : filteredDummy;
 
   return (
     <div className="flex flex-col min-h-screen">
       
       <Navbar />
 
-      {/* Hero Section */}
-      <section className="bg-white py-10 sm:py-16 border-b border-border">
-        <div className="container mx-auto px-4 lg:px-8 text-center max-w-3xl">
-          <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-text-primary leading-tight mb-4 sm:mb-6 font-[family-name:var(--font-outfit)]">
-            Upgrade Harimu dengan Performa Maksimal
-          </h2>
-          <p className="text-sm sm:text-base md:text-lg text-text-secondary mb-6 sm:mb-10 leading-relaxed">
-            Pusat laptop second terpercaya di Malang. Kami menyediakan laptop untuk sekolah, bisnis, hingga gaming berat dengan harga terbaik dan jaminan kepuasan.
-          </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-3 w-full">
-            <button className="btn btn-primary px-6 py-2.5 w-full sm:w-auto text-sm">Belanja Sekarang</button>
-            <button className="btn btn-outline px-6 py-2.5 w-full sm:w-auto text-sm">Lihat Panduan</button>
+      {/* Top Promo Banner */}
+      <section className="bg-blue-600 text-white border-b border-border">
+        <div className="container mx-auto px-4 lg:px-8 py-8 sm:py-12 flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="max-w-xl text-center md:text-left">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold leading-tight mb-3 font-[family-name:var(--font-outfit)]">
+              Kualitas Terbaik, Harga Bersahabat
+            </h2>
+            <p className="text-sm md:text-base text-blue-100 mb-6 leading-relaxed">
+              Dapatkan laptop pilihan Anda dengan jaminan kepuasan. Semua unit telah melewati proses QC yang ketat.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3">
+              <Link href="#katalog" className="btn bg-white text-blue-700 hover:bg-slate-50 px-6 py-2.5 w-full sm:w-auto text-sm">Lihat Katalog</Link>
+            </div>
+          </div>
+          <div className="hidden md:flex flex-1 justify-end">
+            <div className="w-64 h-40 bg-blue-500/50 rounded-xl flex items-center justify-center p-4">
+              <span className="text-blue-100 text-sm italic opacity-80 text-center">Your Banner Image Here</span>
+            </div>
           </div>
         </div>
       </section>
+      
+      {/* Scroll target for catalog */}
+      <div id="katalog" className="pt-2"></div>
 
       {/* Products Grid */}
-      <main className="container mx-auto px-4 lg:px-8 mt-12 mb-20 flex-grow">
-        <div className="flex justify-between items-end mb-8 border-b border-border pb-4">
+      <main className="container mx-auto px-4 lg:px-8 mt-6 mb-20 flex-grow">
+        <div className="flex justify-between items-center mb-6 pb-4">
           <div>
-            <h3 className="text-2xl font-bold text-text-primary m-0 font-[family-name:var(--font-outfit)]">Koleksi Pilihan</h3>
+            <h3 className="text-xl font-medium text-slate-800 m-0">Kategori Pilihan {brand ? `"${brand}"` : ""}</h3>
           </div>
-          <Link href="/products" className="text-primary font-medium hover:underline hidden md:block">Lihat Semua</Link>
         </div>
         
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {displayProducts.map((product) => (
-            <div key={product.id} className="clean-card overflow-hidden flex flex-col group">
-              <div className="h-56 w-full bg-surface relative overflow-hidden">
-                {product.images && product.images.length > 0 ? (
-                  <img src={product.images[0].url} alt={product.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                ) : (
-                  <div className="flex items-center justify-center w-full h-full text-text-secondary">No Image</div>
-                )}
-                <div className="absolute top-3 right-3">
-                  <span className={`text-xs font-semibold px-3 py-1 rounded-full shadow-sm backdrop-blur-sm ${
-                    product.status === 'Available' || product.status === 'Tersedia' 
-                      ? 'bg-green-100/90 text-green-700 border border-green-200' 
-                      : 'bg-red-100/90 text-red-700 border border-red-200'
-                  }`}>
-                    {product.status === 'Available' ? 'Tersedia' : product.status}
-                  </span>
-                </div>
-              </div>
-              <div className="flex flex-col p-4 flex-grow">
-                <div className="mb-3">
-                  <span className="text-[10px] text-text-secondary font-semibold uppercase tracking-wider">{product.brand}</span>
-                  <h4 className="text-base font-bold text-primary mt-1 leading-tight line-clamp-2 hover:underline cursor-pointer">{product.title}</h4>
-                </div>
-                
-                <div className="text-xs text-text-secondary mb-4 flex-grow">
-                  <div className="flex flex-col gap-1">
-                    <div>Prosesor: {product.processor}</div>
-                    <div>RAM: {product.ram}</div>
-                    <div>Storage: {product.storage}</div>
+          {displayProducts.map((product) => {
+            const isAvailable = product.status === 'Available' || product.status === 'Tersedia';
+            return (
+              <div key={product.id} className="clean-card overflow-hidden flex flex-col group border border-slate-100 bg-white shadow-sm hover:shadow-md transition-shadow">
+                <div className="h-56 w-full bg-slate-50 relative overflow-hidden flex items-center justify-center p-4">
+                  {product.images && product.images.length > 0 ? (
+                    <img src={product.images[0].url} alt={product.title} className="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500" />
+                  ) : (
+                    <div className="flex items-center justify-center w-full h-full text-slate-400">No Image</div>
+                  )}
+                  
+                  {/* Sold Out Badge (Circle) */}
+                  {!isAvailable && (
+                    <div className="absolute left-2 bottom-2 w-12 h-12 bg-red-500 text-white rounded-full flex items-center justify-center text-[10px] font-bold shadow-md z-10 leading-tight text-center">
+                      Sold<br/>Out
+                    </div>
+                  )}
+
+                  {/* Condition Badge centered at bottom of image area */}
+                  <div className="absolute bottom-2 left-0 w-full flex justify-center pointer-events-none">
+                    <span className="bg-[#b3e59f] text-green-900 px-4 py-1.5 text-[10px] font-bold uppercase tracking-wider shadow-sm rounded-sm">
+                      {product.condition === 'New' || product.condition.toLowerCase().includes('baru') ? 'NEW UNIT' : 'SECONDHAND UNIT'}
+                    </span>
                   </div>
                 </div>
 
-                <div className="mt-auto pt-3 border-t border-border flex justify-between items-center mb-3">
-                  <p className="text-lg font-bold text-text-primary m-0">
-                    Rp {product.price.toLocaleString('id-ID')}
-                  </p>
-                </div>
+                <div className="flex flex-col p-4 flex-grow bg-white">
+                  <div className="mb-2">
+                    <h4 className="text-sm font-semibold text-slate-800 mt-1 leading-snug line-clamp-2 hover:text-blue-600 cursor-pointer transition-colors">{product.title}</h4>
+                  </div>
+                  
+                  <div className="mt-auto pt-2 flex justify-between items-center mb-3">
+                    <p className="text-sm font-bold text-slate-900 m-0">
+                      Rp {product.price.toLocaleString('id-ID')}
+                    </p>
+                  </div>
 
-                <Link href={`/product/${product.id}`} className="btn btn-outline w-full text-center py-2 text-sm">
-                  Lihat Detail
-                </Link>
+                  <Link href={`/product/${product.id}`} className={`w-full text-center py-2 text-sm font-medium transition-colors rounded ${isAvailable ? 'bg-[#2b2b2b] hover:bg-black text-white' : 'bg-slate-300 text-slate-500 cursor-not-allowed pointer-events-none'}`}>
+                    Beli
+                  </Link>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
+        
+        {displayProducts.length === 0 && (
+          <div className="text-center py-20 text-slate-500">
+            Tidak ada produk ditemukan untuk kategori ini.
+          </div>
+        )}
       </main>
 
       {/* Corporate Footer */}

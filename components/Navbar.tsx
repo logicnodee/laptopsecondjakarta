@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import Sidebar from "./Sidebar";
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -25,8 +26,9 @@ export default function Navbar() {
         <div className="container mx-auto px-4 lg:px-8">
           <div className="flex justify-between items-center h-12 md:h-14">
             
-            {/* Logo */}
+            {/* Logo and Hamburger Menu */}
             <div className="flex-shrink-0 flex items-center">
+              <Sidebar />
               <Link href="/" className="flex items-center">
                 <img src="/logo.png" alt="Laptop Second Malang" className="h-8 md:h-10 w-auto object-contain" />
               </Link>
@@ -76,45 +78,11 @@ export default function Navbar() {
             </div>
           </div>
         </div>
-        
-        {/* Desktop Navigation Links */}
-        <div className="hidden md:block border-t border-slate-100 bg-white">
-          <nav className="container mx-auto px-4 lg:px-8 flex gap-4 overflow-x-auto whitespace-nowrap scrollbar-hide py-1">
-            <Link href="/products" className="nav-link pl-0 text-blue-600">Semua Laptop</Link>
-            <Link href="/" className="nav-link">Laptop Gaming</Link>
-            <Link href="/" className="nav-link">Kebutuhan Kuliah</Link>
-            <Link href="/" className="nav-link">Desain Grafis</Link>
-            <Link href="/" className="nav-link">Di Bawah 4 Juta</Link>
-          </nav>
-        </div>
 
         {/* Mobile Navigation Menu */}
         {isMobileMenuOpen && (
           <div className="md:hidden bg-white border-t border-slate-100 px-4 py-4 space-y-4 shadow-lg absolute w-full left-0">
             {/* Mobile Search */}
-            <div className="relative">
-              <input 
-                type="text" 
-                placeholder="Cari laptop..." 
-                className="w-full pl-3 pr-8 py-2 bg-slate-50 border border-slate-300 rounded-md text-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
-              />
-              {/* Mobile Menu Links */}
-              <nav className="flex flex-col mt-2">
-                <Link href="/products" className="py-2 border-b border-slate-100 text-slate-700 text-sm font-medium hover:text-blue-600">Semua Laptop</Link>
-                <Link href="/" className="py-2 border-b border-slate-100 text-slate-700 text-sm font-medium hover:text-blue-600">Laptop Gaming</Link>
-                <Link href="/" className="block py-2 text-slate-600 text-sm font-medium border-b border-slate-100">Kebutuhan Kuliah</Link>
-                <Link href="/" className="block py-2 text-slate-600 text-sm font-medium border-b border-slate-100">Desain Grafis</Link>
-                <Link href="/" className="block py-2 text-slate-600 text-sm font-medium">Di Bawah 4 Juta</Link>
-              </nav>
-            </div>
-            
-            <div className="pt-3 border-t border-slate-200 flex flex-col gap-2">
-              <a href="tel:+62895626752967" className="text-slate-600 text-sm font-medium py-2 flex items-center justify-center gap-2 border border-slate-300 rounded-md">
-                Hubungi 0895-6267-52967
-              </a>
-              <Link href="/admin" className="btn btn-primary w-full py-2 text-sm rounded-md">Hubungi Penjual</Link>
-              <Link href="/admin" className="text-xs text-center text-slate-500 mt-1">Login Admin</Link>
-            </div>
           </div>
         )}
       </header>
