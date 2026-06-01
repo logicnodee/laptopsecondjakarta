@@ -80,12 +80,19 @@ export default async function ProductDetail({ params }: { params: Promise<{ id: 
               <span className="text-xs font-medium border border-slate-200 bg-white px-3 py-1 rounded">
                 {product.condition}
               </span>
-              <span className={`text-xs font-medium px-3 py-1 rounded ${product.status === 'Available' || product.status === 'Tersedia' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
-                {product.status === 'Available' ? 'Tersedia' : product.status}
-              </span>
-              <span className="text-xs font-medium bg-blue-100 text-blue-700 px-3 py-1 rounded">
-                Sisa Stok: {product.stock}
-              </span>
+              {product.stock === 0 ? (
+                <span className="text-xs font-medium bg-red-100 text-red-700 px-3 py-1 rounded">
+                  Habis Terjual
+                </span>
+              ) : product.stock === 1 ? (
+                <span className="text-xs font-medium bg-orange-100 text-orange-700 px-3 py-1 rounded">
+                  Stok Terakhir
+                </span>
+              ) : (
+                <span className="text-xs font-medium bg-blue-100 text-blue-700 px-3 py-1 rounded">
+                  Sisa Stok: {product.stock}
+                </span>
+              )}
             </div>
             <h1 className="text-xl md:text-2xl font-bold text-primary mb-2 leading-tight font-[family-name:var(--font-outfit)]">{product.title}</h1>
             <p className="text-xl font-bold text-text-primary mt-2">
