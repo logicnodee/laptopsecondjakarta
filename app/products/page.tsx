@@ -107,12 +107,7 @@ export default async function ProductsPage({ searchParams }: { searchParams: Pro
                           </div>
                         )}
 
-                        {/* Condition Badge centered at bottom of image area */}
-                        <div className="absolute bottom-2 left-0 w-full flex justify-center pointer-events-none">
-                          <span className="bg-[#b3e59f] text-green-900 px-4 py-1.5 text-[10px] font-bold uppercase tracking-wider shadow-sm rounded-sm">
-                            {product.condition === 'New' || product.condition.toLowerCase().includes('baru') ? 'NEW UNIT' : 'SECONDHAND UNIT'}
-                          </span>
-                        </div>
+
                       </div>
 
                       <div className="flex flex-col p-4 flex-grow bg-white">
