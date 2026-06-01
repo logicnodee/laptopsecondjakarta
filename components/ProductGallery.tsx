@@ -16,7 +16,7 @@ export default function ProductGallery({ images }: { images: { url: string }[] }
   return (
     <div className="flex flex-col gap-4 w-full">
       {/* Main Image */}
-      <div className="clean-card overflow-hidden aspect-square w-full relative bg-white border border-slate-100">
+      <div className="clean-card overflow-hidden aspect-square w-full max-w-[360px] mx-auto relative bg-white border border-slate-100">
         <img 
           src={images[activeIndex].url} 
           alt={`Product image ${activeIndex + 1}`} 
