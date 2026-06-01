@@ -10,12 +10,16 @@ export default async function ProductsPage({ searchParams }: { searchParams: Pro
   const min = params.min ? parseInt(params.min as string) : undefined;
   const max = params.max ? parseInt(params.max as string) : undefined;
   const sort = params.sort as string;
+  const brand = params.brand as string;
 
   const whereClause: Prisma.ProductWhereInput = {};
   if (min !== undefined || max !== undefined) {
     whereClause.price = {};
     if (min !== undefined) whereClause.price.gte = min;
     if (max !== undefined) whereClause.price.lte = max;
+  }
+  if (brand) {
+    whereClause.brand = { contains: brand };
   }
 
   let orderByClause: Prisma.ProductOrderByWithRelationInput = { createdAt: "desc" };
@@ -47,6 +51,7 @@ export default async function ProductsPage({ searchParams }: { searchParams: Pro
 
   // If using dummy data, apply filters manually for preview purposes
   if (totalProductsInDb === 0) {
+    if (brand !== undefined) displayProducts = displayProducts.filter(p => p.brand.toLowerCase() === brand.toLowerCase());
     if (min !== undefined) displayProducts = displayProducts.filter(p => p.price >= min);
     if (max !== undefined) displayProducts = displayProducts.filter(p => p.price <= max);
     
@@ -61,11 +66,11 @@ export default async function ProductsPage({ searchParams }: { searchParams: Pro
     <div className="flex flex-col min-h-screen">
       <Navbar />
 
-      <main className="container mx-auto px-4 lg:px-8 mt-10 mb-24 flex-grow">
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-8 border-b border-border pb-4 gap-4">
+      <main className="w-full px-4 mt-6 mb-20 flex-grow bg-white">
+        <div className="flex flex-col mb-6 border-b border-slate-100 pb-4 gap-4">
           <div>
-            <h1 className="text-3xl font-bold text-text-primary m-0 font-[family-name:var(--font-outfit)]">Semua Laptop</h1>
-            <p className="text-text-secondary mt-2">Menampilkan {displayProducts.length} produk yang sesuai</p>
+            <h1 className="text-xl font-bold text-slate-800 m-0">Produk {brand ? `"${brand}"` : "Semua Laptop"}</h1>
+            <p className="text-slate-500 text-xs mt-1">Menampilkan {displayProducts.length} produk</p>
           </div>
           <div className="w-full sm:w-auto relative z-20">
             <Suspense fallback={<div className="h-10"></div>}>
@@ -83,67 +88,61 @@ export default async function ProductsPage({ searchParams }: { searchParams: Pro
                 </div>
               </div>
             ) : (
-              <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
-          {displayProducts.map((product) => (
-            <div key={product.id} className="clean-card overflow-hidden flex flex-col group">
-              <div className="h-56 w-full bg-surface relative overflow-hidden">
-                {product.images && product.images.length > 0 ? (
-                  <img src={product.images[0].url} alt={product.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                ) : (
-                  <div className="flex items-center justify-center w-full h-full text-text-secondary">No Image</div>
-                )}
-                <div className="absolute top-3 right-3">
-                  <span className={`text-xs font-semibold px-3 py-1 rounded-full shadow-sm backdrop-blur-sm ${
-                    product.status === 'Available' || product.status === 'Tersedia' 
-                      ? 'bg-green-100/90 text-green-700 border border-green-200' 
-                      : 'bg-red-100/90 text-red-700 border border-red-200'
-                  }`}>
-                    {product.status === 'Available' ? 'Tersedia' : product.status}
-                  </span>
-                </div>
-              </div>
-              <div className="flex flex-col p-5 flex-grow">
-                <div className="mb-4">
-                  <span className="text-xs text-text-secondary font-semibold uppercase tracking-wider">{product.brand}</span>
-                  <h4 className="text-lg font-bold text-primary mt-1 leading-tight line-clamp-2 hover:underline cursor-pointer">{product.title}</h4>
-                </div>
-                
-                <div className="text-sm text-text-secondary mb-6 flex-grow">
-                  <div className="flex flex-col gap-1">
-                    <div>Prosesor: {product.processor}</div>
-                    <div>RAM: {product.ram}</div>
-                    <div>Storage: {product.storage}</div>
-                  </div>
-                </div>
+              <div className="grid grid-cols-2 gap-3 sm:gap-4">
+                {displayProducts.map((product) => {
+                  const isAvailable = product.status === 'Available' || product.status === 'Tersedia';
+                  return (
+                    <div key={product.id} className="clean-card overflow-hidden flex flex-col group border border-slate-100 bg-white shadow-sm hover:shadow-md transition-shadow">
+                      <div className="h-56 w-full bg-slate-50 relative overflow-hidden flex items-center justify-center p-4">
+                        {product.images && product.images.length > 0 ? (
+                          <img src={product.images[0].url} alt={product.title} className="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500" />
+                        ) : (
+                          <div className="flex items-center justify-center w-full h-full text-slate-400">No Image</div>
+                        )}
+                        
+                        {/* Sold Out Badge (Circle) */}
+                        {!isAvailable && (
+                          <div className="absolute left-2 bottom-2 w-12 h-12 bg-red-500 text-white rounded-full flex items-center justify-center text-[10px] font-bold shadow-md z-10 leading-tight text-center">
+                            Sold<br/>Out
+                          </div>
+                        )}
 
-                <div className="mt-auto pt-4 border-t border-border flex justify-between items-center mb-4">
-                  <p className="text-xl font-bold text-text-primary m-0">
-                    Rp {product.price.toLocaleString('id-ID')}
-                  </p>
-                </div>
+                        {/* Condition Badge centered at bottom of image area */}
+                        <div className="absolute bottom-2 left-0 w-full flex justify-center pointer-events-none">
+                          <span className="bg-[#b3e59f] text-green-900 px-4 py-1.5 text-[10px] font-bold uppercase tracking-wider shadow-sm rounded-sm">
+                            {product.condition === 'New' || product.condition.toLowerCase().includes('baru') ? 'NEW UNIT' : 'SECONDHAND UNIT'}
+                          </span>
+                        </div>
+                      </div>
 
-                <Link href={`/product/${product.id}`} className="btn btn-outline w-full text-center">
-                  Lihat Detail
-                </Link>
-              </div>
-            </div>
-          ))}
+                      <div className="flex flex-col p-4 flex-grow bg-white">
+                        <div className="mb-2">
+                          <h4 className="text-sm font-semibold text-slate-800 mt-1 leading-snug line-clamp-2 hover:text-blue-600 cursor-pointer transition-colors">{product.title}</h4>
+                        </div>
+                        
+                        <div className="mt-auto pt-2 flex justify-between items-center mb-3">
+                          <p className="text-sm font-bold text-slate-900 m-0">
+                            Rp {product.price.toLocaleString('id-ID')}
+                          </p>
+                        </div>
+
+                        <Link href={`/product/${product.id}`} className={`w-full text-center py-2 text-sm font-medium transition-colors rounded ${isAvailable ? 'bg-[#2b2b2b] hover:bg-black text-white' : 'bg-slate-300 text-slate-500 cursor-not-allowed pointer-events-none'}`}>
+                          Beli
+                        </Link>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
             )}
         </div>
       </main>
 
-      {/* Corporate Footer */}
-      <footer className="bg-white border-t border-border mt-auto">
-        <div className="bg-surface py-6 border-t border-border text-sm text-text-secondary">
-          <div className="container mx-auto px-4 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
-            <span>&copy; {new Date().getFullYear()} Laptop Second Malang. All Rights Reserved.</span>
-            <div className="flex flex-wrap justify-center gap-2 items-center">
-              <span>Pembayaran Aman:</span>
-              <span className="font-medium text-text-primary">BCA / Mandiri / BNI / COD</span>
-            </div>
-          </div>
-        </div>
+      {/* Simple Footer inside 600px */}
+      <footer className="bg-slate-50 border-t border-slate-200 mt-auto px-4 py-8 text-center text-xs text-slate-500">
+        <p className="mb-2 font-bold text-slate-700">Laptop Second Malang</p>
+        <p className="mb-4">Jl. Mayjend Panjaitan No.111, Penanggungan, Kec. Klojen, Kota Malang</p>
+        <p>&copy; {new Date().getFullYear()} Hak Cipta Dilindungi.</p>
       </footer>
 
     </div>

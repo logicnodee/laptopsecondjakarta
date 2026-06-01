@@ -40,6 +40,7 @@ export default async function Home({
 
   return (
     <div className="flex flex-col min-h-screen">
+      <Navbar />
       
       {/* Top Promo Banner */}
       <section className="bg-blue-600 text-white w-full">
@@ -54,30 +55,30 @@ export default async function Home({
       </section>
 
       {/* Categories Grid */}
-      <section className="w-full px-4 pt-6 bg-white">
+      <section className="w-full px-4 pt-6 bg-white flex-grow">
         <h3 className="text-sm font-semibold text-slate-800 mb-4 flex items-center gap-1">
-          Kategori Pilihan 
+          Pilih Merk
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 text-slate-500">
             <path fillRule="evenodd" d="M11.3 1.046A1 1 0 0 1 12 2v5h4a1 1 0 0 1 .82 1.573l-7 10A1 1 0 0 1 8 18v-5H4a1 1 0 0 1-.82-1.573l7-10a1 1 0 0 1 1.12-.38Z" clipRule="evenodd" />
           </svg>
         </h3>
         
         <div className="grid grid-cols-3 gap-2">
-          <Link href="/?brand=Asus" className="flex flex-col items-center group cursor-pointer">
+          <Link href="/products?brand=Asus" className="flex flex-col items-center group cursor-pointer">
             <div className="w-16 h-16 sm:w-20 sm:h-20 bg-white rounded-xl shadow-sm border border-slate-100 p-2 flex items-center justify-center group-hover:shadow-md transition-shadow">
               <img src="/asus.png" alt="Asus" className="max-w-full max-h-full object-contain" />
             </div>
             <span className="text-[11px] mt-2 font-medium text-slate-600 group-hover:text-blue-600">Asus</span>
           </Link>
 
-          <Link href="/?brand=Lenovo" className="flex flex-col items-center group cursor-pointer">
+          <Link href="/products?brand=Lenovo" className="flex flex-col items-center group cursor-pointer">
             <div className="w-16 h-16 sm:w-20 sm:h-20 bg-white rounded-xl shadow-sm border border-slate-100 p-2 flex items-center justify-center group-hover:shadow-md transition-shadow">
               <img src="/lenovo.png" alt="Lenovo" className="max-w-full max-h-full object-contain" />
             </div>
             <span className="text-[11px] mt-2 font-medium text-slate-600 group-hover:text-blue-600">Lenovo</span>
           </Link>
 
-          <Link href="/?brand=HP" className="flex flex-col items-center group cursor-pointer">
+          <Link href="/products?brand=HP" className="flex flex-col items-center group cursor-pointer">
             <div className="w-16 h-16 sm:w-20 sm:h-20 bg-white rounded-xl shadow-sm border border-slate-100 p-2 flex items-center justify-center group-hover:shadow-md transition-shadow">
               <img src="/hp.png" alt="HP" className="max-w-full max-h-full object-contain" />
             </div>
@@ -86,67 +87,7 @@ export default async function Home({
         </div>
       </section>
       
-      {/* Products Grid */}
-      <main className="w-full px-4 mt-6 mb-20 flex-grow bg-white">
-        <div className="flex justify-between items-center mb-6 pb-4">
-          <div>
-            <h3 className="text-xl font-medium text-slate-800 m-0">Kategori Pilihan {brand ? `"${brand}"` : ""}</h3>
-          </div>
-        </div>
-        
-        <div className="grid grid-cols-2 gap-3 sm:gap-4">
-          {displayProducts.map((product) => {
-            const isAvailable = product.status === 'Available' || product.status === 'Tersedia';
-            return (
-              <div key={product.id} className="clean-card overflow-hidden flex flex-col group border border-slate-100 bg-white shadow-sm hover:shadow-md transition-shadow">
-                <div className="h-56 w-full bg-slate-50 relative overflow-hidden flex items-center justify-center p-4">
-                  {product.images && product.images.length > 0 ? (
-                    <img src={product.images[0].url} alt={product.title} className="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500" />
-                  ) : (
-                    <div className="flex items-center justify-center w-full h-full text-slate-400">No Image</div>
-                  )}
-                  
-                  {/* Sold Out Badge (Circle) */}
-                  {!isAvailable && (
-                    <div className="absolute left-2 bottom-2 w-12 h-12 bg-red-500 text-white rounded-full flex items-center justify-center text-[10px] font-bold shadow-md z-10 leading-tight text-center">
-                      Sold<br/>Out
-                    </div>
-                  )}
-
-                  {/* Condition Badge centered at bottom of image area */}
-                  <div className="absolute bottom-2 left-0 w-full flex justify-center pointer-events-none">
-                    <span className="bg-[#b3e59f] text-green-900 px-4 py-1.5 text-[10px] font-bold uppercase tracking-wider shadow-sm rounded-sm">
-                      {product.condition === 'New' || product.condition.toLowerCase().includes('baru') ? 'NEW UNIT' : 'SECONDHAND UNIT'}
-                    </span>
-                  </div>
-                </div>
-
-                <div className="flex flex-col p-4 flex-grow bg-white">
-                  <div className="mb-2">
-                    <h4 className="text-sm font-semibold text-slate-800 mt-1 leading-snug line-clamp-2 hover:text-blue-600 cursor-pointer transition-colors">{product.title}</h4>
-                  </div>
-                  
-                  <div className="mt-auto pt-2 flex justify-between items-center mb-3">
-                    <p className="text-sm font-bold text-slate-900 m-0">
-                      Rp {product.price.toLocaleString('id-ID')}
-                    </p>
-                  </div>
-
-                  <Link href={`/product/${product.id}`} className={`w-full text-center py-2 text-sm font-medium transition-colors rounded ${isAvailable ? 'bg-[#2b2b2b] hover:bg-black text-white' : 'bg-slate-300 text-slate-500 cursor-not-allowed pointer-events-none'}`}>
-                    Beli
-                  </Link>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-        
-        {displayProducts.length === 0 && (
-          <div className="text-center py-20 text-slate-500">
-            Tidak ada produk ditemukan untuk kategori ini.
-          </div>
-        )}
-      </main>
+      {/* End of Home Page Content */}
 
       {/* Simple Footer inside 600px */}
       <footer className="bg-slate-50 border-t border-slate-200 mt-auto px-4 py-8 text-center text-xs text-slate-500">
