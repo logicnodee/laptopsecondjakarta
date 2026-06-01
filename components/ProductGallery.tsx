@@ -15,13 +15,15 @@ export default function ProductGallery({ images }: { images: { url: string }[] }
 
   return (
     <div className="flex flex-col gap-4 w-full">
-      {/* Main Image */}
-      <div className="overflow-hidden aspect-square w-full relative bg-white border-y border-slate-100">
-        <img 
-          src={images[activeIndex].url} 
-          alt={`Product image ${activeIndex + 1}`} 
-          className="w-full h-full object-cover absolute inset-0 transition-opacity duration-300"
-        />
+      {/* Main Image Stage */}
+      <div className="w-full bg-slate-50 border-y border-slate-200 flex items-center justify-center">
+        <div className="relative w-full aspect-square max-h-[320px] sm:max-h-[400px]">
+          <img 
+            src={images[activeIndex].url} 
+            alt={`Product image ${activeIndex + 1}`} 
+            className="w-full h-full object-contain absolute inset-0 transition-opacity duration-300"
+          />
+        </div>
       </div>
 
       {/* Thumbnails */}
