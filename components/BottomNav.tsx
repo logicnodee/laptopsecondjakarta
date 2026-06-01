@@ -6,6 +6,10 @@ import { usePathname } from "next/navigation";
 export default function BottomNav() {
   const pathname = usePathname();
 
+  if (pathname.startsWith('/product/')) {
+    return null;
+  }
+
   return (
     <div className="fixed bottom-0 w-full max-w-[600px] bg-black text-white flex justify-around items-center h-16 z-50 rounded-t-xl shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)]">
       <Link href="/" className={`flex flex-col items-center justify-center w-full h-full space-y-1 ${pathname === '/' ? 'text-white' : 'text-slate-400 hover:text-slate-200'}`}>

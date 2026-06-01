@@ -61,7 +61,7 @@ export default async function ProductDetail({ params }: { params: Promise<{ id: 
           </Link>
         </nav>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-1">
+        <div className="flex flex-col gap-6 mt-1">
         {/* Product Image Gallery */}
         <ProductGallery images={product.images || []} />
 
@@ -111,16 +111,17 @@ export default async function ProductDetail({ params }: { params: Promise<{ id: 
               {product.description || "Tidak ada deskripsi rinci untuk produk ini."}
             </div>
           </div>
-
-          <div className="flex flex-col sm:flex-row gap-3 mt-auto">
-            <Link href={`/checkout/${product.id}`} className="btn btn-primary flex-1 text-center py-3.5">
-              Beli Sekarang
-            </Link>
-            <a href={waLink} target="_blank" rel="noopener noreferrer" className="btn bg-green-600 hover:bg-green-700 text-white flex-1 text-center py-3.5 rounded-lg font-semibold transition-colors">
-              Konsultasi ke WA
-            </a>
-          </div>
         </div>
+      </div>
+      
+      {/* Fixed Bottom Action Bar */}
+      <div className="fixed bottom-0 w-full max-w-[600px] bg-white border-t border-slate-200 p-3 flex gap-3 z-50 rounded-t-xl shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)]">
+        <Link href={`/checkout/${product.id}`} className="btn btn-primary flex-1 text-center py-3.5 bg-[#2b2b2b] hover:bg-black text-white rounded-lg font-semibold">
+          Beli Sekarang
+        </Link>
+        <a href={waLink} target="_blank" rel="noopener noreferrer" className="btn flex-1 text-center py-3.5 bg-green-500 hover:bg-green-600 text-white rounded-lg font-semibold transition-colors">
+          Konsultasi WA
+        </a>
       </div>
       </div>
     </div>
