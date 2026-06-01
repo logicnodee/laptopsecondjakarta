@@ -56,11 +56,8 @@ export default async function Home({
 
       {/* Categories Grid */}
       <section className="w-full px-4 pt-6 bg-white flex-grow">
-        <h3 className="text-sm font-semibold text-slate-800 mb-4 flex items-center gap-1">
+        <h3 className="text-sm font-semibold text-slate-800 mb-4">
           Pilih Merk
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 text-slate-500">
-            <path fillRule="evenodd" d="M11.3 1.046A1 1 0 0 1 12 2v5h4a1 1 0 0 1 .82 1.573l-7 10A1 1 0 0 1 8 18v-5H4a1 1 0 0 1-.82-1.573l7-10a1 1 0 0 1 1.12-.38Z" clipRule="evenodd" />
-          </svg>
         </h3>
         
         <div className="grid grid-cols-3 gap-2">
@@ -90,10 +87,12 @@ export default async function Home({
       {/* End of Home Page Content */}
 
       {/* Simple Footer inside 600px */}
-      <footer className="bg-slate-50 border-t border-slate-200 mt-auto px-4 py-8 text-center text-xs text-slate-500">
-        <p className="mb-2 font-bold text-slate-700">Laptop Second Malang</p>
-        <p className="mb-4">Jl. Mayjend Panjaitan No.111, Penanggungan, Kec. Klojen, Kota Malang</p>
-        <p>&copy; {new Date().getFullYear()} Hak Cipta Dilindungi.</p>
+      <footer className="bg-slate-50 border-t border-slate-200 mt-auto px-4 py-8 text-center flex flex-col items-center">
+        <img src="/logo.png" alt="Laptop Second Malang" className="h-12 w-auto object-contain mb-4 opacity-80" />
+        <p className="text-xs text-slate-500 mb-4 max-w-[250px] mx-auto leading-relaxed">
+          Jl. Mayjend Panjaitan No.111, Penanggungan, Kec. Klojen, Kota Malang
+        </p>
+        <p className="text-[10px] text-slate-400">&copy; {new Date().getFullYear()} Hak Cipta Dilindungi.</p>
       </footer>
 
     </div>

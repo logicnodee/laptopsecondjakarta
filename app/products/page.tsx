@@ -139,10 +139,12 @@ export default async function ProductsPage({ searchParams }: { searchParams: Pro
       </main>
 
       {/* Simple Footer inside 600px */}
-      <footer className="bg-slate-50 border-t border-slate-200 mt-auto px-4 py-8 text-center text-xs text-slate-500">
-        <p className="mb-2 font-bold text-slate-700">Laptop Second Malang</p>
-        <p className="mb-4">Jl. Mayjend Panjaitan No.111, Penanggungan, Kec. Klojen, Kota Malang</p>
-        <p>&copy; {new Date().getFullYear()} Hak Cipta Dilindungi.</p>
+      <footer className="bg-slate-50 border-t border-slate-200 mt-auto px-4 py-8 text-center flex flex-col items-center">
+        <img src="/logo.png" alt="Laptop Second Malang" className="h-12 w-auto object-contain mb-4 opacity-80" />
+        <p className="text-xs text-slate-500 mb-4 max-w-[250px] mx-auto leading-relaxed">
+          Jl. Mayjend Panjaitan No.111, Penanggungan, Kec. Klojen, Kota Malang
+        </p>
+        <p className="text-[10px] text-slate-400">&copy; {new Date().getFullYear()} Hak Cipta Dilindungi.</p>
       </footer>
 
     </div>

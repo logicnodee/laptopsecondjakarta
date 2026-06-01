@@ -12,11 +12,10 @@ export default function Navbar() {
           <div className="flex flex-col gap-3 py-3">
             
             <div className="flex justify-between items-center w-full">
-              {/* Logo and Hamburger Menu */}
               <div className="flex-shrink-0 flex items-center">
                 <Sidebar />
-                <Link href="/" className="flex items-center">
-                  <img src="/logo.png" alt="Laptop Second Malang" className="h-8 w-auto object-contain" />
+                <Link href="/" className="flex items-center ml-2">
+                  <img src="/logo.png" alt="Laptop Second Malang" className="h-10 sm:h-12 w-auto object-contain" />
                 </Link>
               </div>
               
