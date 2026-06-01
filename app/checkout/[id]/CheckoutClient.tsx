@@ -70,7 +70,7 @@ export default function CheckoutClient({ product }: { product: any }) {
                 </div>
                 <div>
                   <p className="font-bold text-base text-primary">8161511935</p>
-                  <p className="text-xs text-text-secondary">a.n Laptop Second Malang</p>
+                  <p className="text-xs text-text-secondary">a.n Mukhammad ayatulloh husaini</p>
                 </div>
               </div>
             </div>
