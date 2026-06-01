@@ -11,6 +11,7 @@ export async function addProduct(formData: FormData) {
   const title = formData.get("title") as string;
   const brand = formData.get("brand") as string;
   const price = parseInt(formData.get("price") as string);
+  const stock = parseInt(formData.get("stock") as string) || 1;
   const ram = formData.get("ram") as string;
   const storage = formData.get("storage") as string;
   const processor = formData.get("processor") as string;
@@ -46,11 +47,13 @@ export async function addProduct(formData: FormData) {
       title,
       brand,
       price,
+      stock,
       ram,
       storage,
       processor,
       condition,
       description,
+      status: stock > 0 ? "Tersedia" : "Terjual",
       images: {
         create: imageUrls.map(url => ({ url }))
       }
@@ -73,10 +76,13 @@ export async function deleteProduct(id: number) {
 }
 
 export async function toggleStatus(id: number, currentStatus: string) {
-  const newStatus = currentStatus === 'Available' || currentStatus === 'Tersedia' ? 'Terjual' : 'Tersedia';
+  const isAvailable = currentStatus === 'Available' || currentStatus === 'Tersedia';
+  const newStatus = isAvailable ? 'Terjual' : 'Tersedia';
+  const newStock = isAvailable ? 0 : 1; // Default to 1 if marking back as available
+  
   await prisma.product.update({
     where: { id },
-    data: { status: newStatus }
+    data: { status: newStatus, stock: newStock }
   });
   revalidatePath("/");
   revalidatePath("/admin");

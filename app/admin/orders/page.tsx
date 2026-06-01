@@ -6,7 +6,13 @@ import { updateOrderStatus, deleteOrder } from "./actions";
 export default async function AdminOrdersPage() {
   const orders = await prisma.order.findMany({
     orderBy: { createdAt: "desc" },
-    include: { product: true }
+    include: {
+      items: {
+        include: {
+          product: true
+        }
+      }
+    }
   });
 
   return (
@@ -48,7 +54,14 @@ export default async function AdminOrdersPage() {
                     <tr key={order.id} className="hover:bg-surface transition-colors">
                       <td className="p-4 font-medium text-text-primary">#{order.id}</td>
                       <td className="p-4">
-                        <div className="font-bold text-primary mb-1">{order.product.title}</div>
+                        <div className="mb-2">
+                          {order.items.map(item => (
+                            <div key={item.id} className="font-bold text-primary text-sm flex justify-between">
+                              <span>{item.quantity}x {item.product.title}</span>
+                              <span className="text-blue-600">Rp {(item.price * item.quantity).toLocaleString('id-ID')}</span>
+                            </div>
+                          ))}
+                        </div>
                         <div className="text-sm text-text-secondary mb-1">
                           <span className="font-semibold text-text-primary">WA:</span> {order.whatsappNumber}
                         </div>

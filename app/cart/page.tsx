@@ -75,7 +75,7 @@ export default function CartPage() {
             
             {/* If there's only 1 item, we can proceed to checkout directly. If multiple, maybe just checkout the first one for now since the schema only supports single item checkout, but we'll adapt. */}
             <Link 
-              href={cartItems.length === 1 ? `/checkout/${cartItems[0].id}` : `/checkout/${cartItems[0].id}`} 
+              href="/checkout" 
               className="mt-4 bg-green-500 hover:bg-green-600 text-white font-bold py-4 rounded-xl text-center shadow-lg transition-transform active:scale-[0.98]"
             >
               Lanjut ke Pembayaran ({totalItems} Item)

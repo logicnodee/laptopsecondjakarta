@@ -23,10 +23,10 @@ export default async function ProductDetail({ params }: { params: Promise<{ id: 
   // Fallback to dummy data for preview if DB is empty
   if (!product) {
     const dummyProducts = [
-      { id: 1, title: "Asus ROG Zephyrus G14", brand: "Asus", price: 14500000, ram: "16GB", storage: "1TB SSD", processor: "Ryzen 9 5900HS", condition: "Mulus 95%", status: "Available", description: "Laptop gaming super tipis dan kencang. Baterai awet untuk ukuran laptop gaming. Kelengkapan fullset original. Cocok untuk gaming berat dan rendering.", images: [{ url: "/merk/asus/asus.png" }, { url: "/merk/asus/asus2.png" }] },
-      { id: 2, title: "Lenovo ThinkPad T490", brand: "Lenovo", price: 6200000, ram: "8GB", storage: "512GB SSD", processor: "Intel Core i5-8365U", condition: "Lecet Pemakaian", status: "Available", description: "Laptop bisnis legendaris. Keyboard sangat nyaman, body kokoh standar militer. Minus lecet pemakaian di sudut. Mesin 100% normal.", images: [{ url: "/merk/lenovo/lenovo.png" }] },
-      { id: 3, title: "Asus Vivobook 14", brand: "Asus", price: 5500000, ram: "8GB", storage: "512GB SSD", processor: "Intel Core i3-1115G4", condition: "Mulus 90%", status: "Available", description: "Laptop pelajar dan mahasiswa. Ringan, tipis, baterai awet, dan sudah SSD NVMe.", images: [{ url: "/merk/asus/asus2.png" }] },
-      { id: 4, title: "HP Pavilion Gaming 15", brand: "HP", price: 8500000, ram: "16GB", storage: "512GB SSD", processor: "Intel Core i7-9750H", condition: "Normal", status: "Available", description: "Laptop gaming budget. Sudah upgrade RAM ke 16GB. Layar IPS jernih. Ada backlit keyboard.", images: [{ url: "/merk/hp/hp.png" }] },
+      { id: 1, title: "Asus ROG Zephyrus G14", brand: "Asus", price: 14500000, stock: 1, ram: "16GB", storage: "1TB SSD", processor: "Ryzen 9 5900HS", condition: "Mulus 95%", status: "Available", description: "Laptop gaming super tipis dan kencang. Baterai awet untuk ukuran laptop gaming. Kelengkapan fullset original. Cocok untuk gaming berat dan rendering.", images: [{ url: "/merk/asus/asus.png" }, { url: "/merk/asus/asus2.png" }] },
+      { id: 2, title: "Lenovo ThinkPad T490", brand: "Lenovo", price: 6200000, stock: 1, ram: "8GB", storage: "512GB SSD", processor: "Intel Core i5-8365U", condition: "Lecet Pemakaian", status: "Available", description: "Laptop bisnis legendaris. Keyboard sangat nyaman, body kokoh standar militer. Minus lecet pemakaian di sudut. Mesin 100% normal.", images: [{ url: "/merk/lenovo/lenovo.png" }] },
+      { id: 3, title: "Asus Vivobook 14", brand: "Asus", price: 5500000, stock: 1, ram: "8GB", storage: "512GB SSD", processor: "Intel Core i3-1115G4", condition: "Mulus 90%", status: "Available", description: "Laptop pelajar dan mahasiswa. Ringan, tipis, baterai awet, dan sudah SSD NVMe.", images: [{ url: "/merk/asus/asus2.png" }] },
+      { id: 4, title: "HP Pavilion Gaming 15", brand: "HP", price: 8500000, stock: 1, ram: "16GB", storage: "512GB SSD", processor: "Intel Core i7-9750H", condition: "Normal", status: "Available", description: "Laptop gaming budget. Sudah upgrade RAM ke 16GB. Layar IPS jernih. Ada backlit keyboard.", images: [{ url: "/merk/hp/hp.png" }] },
     ];
     // @ts-ignore
     product = dummyProducts.find(p => p.id === parseInt(id));
@@ -73,15 +73,18 @@ export default async function ProductDetail({ params }: { params: Promise<{ id: 
           {/* Product Info */}
           <div className="flex flex-col">
             <div className="mb-4">
-            <div className="flex flex-wrap gap-2 sm:gap-3 mb-3 items-center">
-              <span className="text-[10px] border border-border bg-white px-2 py-0.5 rounded font-semibold text-text-secondary uppercase tracking-wider">{product.brand}</span>
-              <span className="text-[10px] bg-surface border border-border px-2 py-0.5 rounded font-semibold text-text-primary">{product.condition}</span>
-              <span className={`text-[10px] font-bold px-2 py-0.5 rounded ${
-                product.status === 'Available' || product.status === 'Tersedia' 
-                  ? 'bg-green-100 text-green-700' 
-                  : 'bg-red-100 text-red-700'
-              }`}>
+            <div className="flex flex-wrap gap-2 mb-4">
+              <span className="text-xs font-medium border border-slate-200 bg-white px-3 py-1 rounded">
+                {product.brand}
+              </span>
+              <span className="text-xs font-medium border border-slate-200 bg-white px-3 py-1 rounded">
+                {product.condition}
+              </span>
+              <span className={`text-xs font-medium px-3 py-1 rounded ${product.status === 'Available' || product.status === 'Tersedia' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
                 {product.status === 'Available' ? 'Tersedia' : product.status}
+              </span>
+              <span className="text-xs font-medium bg-blue-100 text-blue-700 px-3 py-1 rounded">
+                Sisa Stok: {product.stock}
               </span>
             </div>
             <h1 className="text-xl md:text-2xl font-bold text-primary mb-2 leading-tight font-[family-name:var(--font-outfit)]">{product.title}</h1>

@@ -60,9 +60,15 @@ export default async function AdminPage() {
               <input type="text" name="processor" required className="input" placeholder="Intel Core i5-1135G7" />
             </div>
 
-            <div>
-              <label className="block text-sm font-medium text-text-secondary mb-1">Kondisi</label>
-              <input type="text" name="condition" required className="input" placeholder="Mulus 95%" />
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <label className="block text-sm font-medium text-text-secondary mb-1">Kondisi</label>
+                <input type="text" name="condition" required className="input" placeholder="Mulus 95%" />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-text-secondary mb-1">Stok</label>
+                <input type="number" name="stock" required min="1" defaultValue="1" className="input" placeholder="1" />
+              </div>
             </div>
 
             <div>
@@ -108,9 +114,14 @@ export default async function AdminPage() {
                       </td>
                       <td className="p-4 font-semibold text-text-primary">Rp {product.price.toLocaleString('id-ID')}</td>
                       <td className="p-4">
-                        <span className="text-xs font-medium border border-border bg-white px-3 py-1 rounded">
-                          {product.condition}
-                        </span>
+                        <div className="flex gap-2 items-center">
+                          <span className="text-xs font-medium border border-border bg-white px-3 py-1 rounded">
+                            {product.condition}
+                          </span>
+                          <span className="text-xs font-medium bg-blue-100 text-blue-800 px-3 py-1 rounded">
+                            Stok: {product.stock}
+                          </span>
+                        </div>
                       </td>
                       <td className="p-4 text-right flex justify-end gap-2">
                         <form action={toggleStatus.bind(null, product.id, product.status)}>
