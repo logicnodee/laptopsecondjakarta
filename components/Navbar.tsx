@@ -9,7 +9,7 @@ export default function Navbar() {
   return (
     <>
       {/* Top Bar - Hidden on mobile */}
-      <div className="bg-slate-900 text-slate-300 text-xs py-2 hidden md:block">
+      <div className="bg-slate-900 text-slate-300 text-[10px] py-1 hidden md:block">
         <div className="container mx-auto px-4 lg:px-8 flex justify-between items-center">
           <div className="flex gap-4">
             <a href="https://maps.app.goo.gl/DE8bEzh1s7V8bHW88" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Lokasi Toko di Malang</a>
@@ -23,11 +23,11 @@ export default function Navbar() {
       {/* Main Header */}
       <header className="bg-white border-b border-slate-200 sticky top-0 z-50">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="flex justify-between items-center h-16 md:h-20">
+          <div className="flex justify-between items-center h-12 md:h-14">
             
             {/* Logo */}
             <div className="flex-shrink-0 flex items-center">
-              <Link href="/" className="text-lg sm:text-xl md:text-2xl font-bold text-blue-700 tracking-tight font-[family-name:var(--font-outfit)]">
+              <Link href="/" className="text-base sm:text-lg md:text-xl font-bold text-blue-700 tracking-tight font-[family-name:var(--font-outfit)]">
                 Laptop Second Malang
               </Link>
             </div>
@@ -37,7 +37,7 @@ export default function Navbar() {
               <input 
                 type="text" 
                 placeholder="Cari laptop idaman Anda..." 
-                className="w-full pl-4 pr-10 py-2 bg-slate-50 border border-slate-300 rounded-lg text-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors"
+                className="w-full pl-3 pr-8 py-1.5 bg-slate-50 border border-slate-300 rounded-lg text-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors"
               />
               <button className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-blue-600">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
@@ -79,7 +79,7 @@ export default function Navbar() {
         
         {/* Desktop Navigation Links */}
         <div className="hidden md:block border-t border-slate-100 bg-white">
-          <nav className="container mx-auto px-4 lg:px-8 flex gap-6 overflow-x-auto whitespace-nowrap scrollbar-hide py-2">
+          <nav className="container mx-auto px-4 lg:px-8 flex gap-4 overflow-x-auto whitespace-nowrap scrollbar-hide py-1">
             <Link href="/products" className="nav-link pl-0 text-blue-600">Semua Laptop</Link>
             <Link href="/" className="nav-link">Laptop Gaming</Link>
             <Link href="/" className="nav-link">Kebutuhan Kuliah</Link>

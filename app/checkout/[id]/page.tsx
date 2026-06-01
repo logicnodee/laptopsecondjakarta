@@ -50,14 +50,14 @@ export default async function CheckoutPage({ params }: { params: Promise<{ id: s
     <div className="flex flex-col min-h-screen bg-background">
       <Navbar />
       
-      <div className="container mx-auto px-4 lg:px-8 py-10 flex-grow">
-        <nav className="py-2 mb-6">
-          <Link href={`/product/${product.id}`} className="inline-flex items-center gap-2 text-slate-500 hover:text-blue-600 transition-colors font-medium text-sm">
+      <div className="container mx-auto px-4 lg:px-8 py-6 flex-grow">
+        <nav className="py-1 mb-4">
+          <Link href={`/product/${product.id}`} className="inline-flex items-center gap-2 text-slate-500 hover:text-blue-600 transition-colors font-medium text-xs">
             &larr; Kembali ke Produk
           </Link>
         </nav>
 
-        <h1 className="text-3xl font-bold text-primary mb-8 font-[family-name:var(--font-outfit)]">Checkout</h1>
+        <h1 className="text-xl font-bold text-primary mb-6 font-[family-name:var(--font-outfit)]">Checkout</h1>
 
         <CheckoutClient product={product} />
       </div>
