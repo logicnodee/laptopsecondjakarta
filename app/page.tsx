@@ -41,42 +41,60 @@ export default async function Home({
   return (
     <div className="flex flex-col min-h-screen">
       
-      <Navbar />
-
       {/* Top Promo Banner */}
-      <section className="bg-blue-600 text-white border-b border-border">
-        <div className="container mx-auto px-4 lg:px-8 py-8 sm:py-12 flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="max-w-xl text-center md:text-left">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold leading-tight mb-3 font-[family-name:var(--font-outfit)]">
-              Kualitas Terbaik, Harga Bersahabat
-            </h2>
-            <p className="text-sm md:text-base text-blue-100 mb-6 leading-relaxed">
-              Dapatkan laptop pilihan Anda dengan jaminan kepuasan. Semua unit telah melewati proses QC yang ketat.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-3">
-              <Link href="#katalog" className="btn bg-white text-blue-700 hover:bg-slate-50 px-6 py-2.5 w-full sm:w-auto text-sm">Lihat Katalog</Link>
+      <section className="bg-blue-600 text-white w-full">
+        <div className="w-full px-4 py-8 text-center flex flex-col items-center justify-center min-h-[160px] bg-gradient-to-r from-blue-600 to-blue-500">
+          <h2 className="text-xl md:text-2xl font-bold leading-tight mb-2 font-[family-name:var(--font-outfit)]">
+            Cicilan 0% Tenor 6 Bulan
+          </h2>
+          <p className="text-sm text-blue-100 mb-4">
+            Bebas 1 Bulan Cicilan. Syarat & Ketentuan Berlaku.
+          </p>
+        </div>
+      </section>
+
+      {/* Categories Grid */}
+      <section className="w-full px-4 pt-6 bg-white">
+        <h3 className="text-sm font-semibold text-slate-800 mb-4 flex items-center gap-1">
+          Kategori Pilihan 
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 text-slate-500">
+            <path fillRule="evenodd" d="M11.3 1.046A1 1 0 0 1 12 2v5h4a1 1 0 0 1 .82 1.573l-7 10A1 1 0 0 1 8 18v-5H4a1 1 0 0 1-.82-1.573l7-10a1 1 0 0 1 1.12-.38Z" clipRule="evenodd" />
+          </svg>
+        </h3>
+        
+        <div className="grid grid-cols-3 gap-2">
+          <Link href="/?brand=Asus" className="flex flex-col items-center group cursor-pointer">
+            <div className="w-16 h-16 sm:w-20 sm:h-20 bg-white rounded-xl shadow-sm border border-slate-100 p-2 flex items-center justify-center group-hover:shadow-md transition-shadow">
+              <img src="/asus.png" alt="Asus" className="max-w-full max-h-full object-contain" />
             </div>
-          </div>
-          <div className="hidden md:flex flex-1 justify-end">
-            <div className="w-64 h-40 bg-blue-500/50 rounded-xl flex items-center justify-center p-4">
-              <span className="text-blue-100 text-sm italic opacity-80 text-center">Your Banner Image Here</span>
+            <span className="text-[11px] mt-2 font-medium text-slate-600 group-hover:text-blue-600">Asus</span>
+          </Link>
+
+          <Link href="/?brand=Lenovo" className="flex flex-col items-center group cursor-pointer">
+            <div className="w-16 h-16 sm:w-20 sm:h-20 bg-white rounded-xl shadow-sm border border-slate-100 p-2 flex items-center justify-center group-hover:shadow-md transition-shadow">
+              <img src="/lenovo.png" alt="Lenovo" className="max-w-full max-h-full object-contain" />
             </div>
-          </div>
+            <span className="text-[11px] mt-2 font-medium text-slate-600 group-hover:text-blue-600">Lenovo</span>
+          </Link>
+
+          <Link href="/?brand=HP" className="flex flex-col items-center group cursor-pointer">
+            <div className="w-16 h-16 sm:w-20 sm:h-20 bg-white rounded-xl shadow-sm border border-slate-100 p-2 flex items-center justify-center group-hover:shadow-md transition-shadow">
+              <img src="/hp.png" alt="HP" className="max-w-full max-h-full object-contain" />
+            </div>
+            <span className="text-[11px] mt-2 font-medium text-slate-600 group-hover:text-blue-600">HP</span>
+          </Link>
         </div>
       </section>
       
-      {/* Scroll target for catalog */}
-      <div id="katalog" className="pt-2"></div>
-
       {/* Products Grid */}
-      <main className="container mx-auto px-4 lg:px-8 mt-6 mb-20 flex-grow">
+      <main className="w-full px-4 mt-6 mb-20 flex-grow bg-white">
         <div className="flex justify-between items-center mb-6 pb-4">
           <div>
             <h3 className="text-xl font-medium text-slate-800 m-0">Kategori Pilihan {brand ? `"${brand}"` : ""}</h3>
           </div>
         </div>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 gap-3 sm:gap-4">
           {displayProducts.map((product) => {
             const isAvailable = product.status === 'Available' || product.status === 'Tersedia';
             return (
@@ -130,51 +148,11 @@ export default async function Home({
         )}
       </main>
 
-      {/* Corporate Footer */}
-      <footer className="bg-white border-t border-border mt-auto">
-        <div className="container mx-auto px-4 lg:px-8 py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-          <div>
-            <h2 className="text-xl font-bold mb-4 text-primary font-[family-name:var(--font-outfit)]">Laptop Second Malang</h2>
-            <p className="text-text-secondary text-sm mb-4 leading-relaxed">
-              Pusat penjualan laptop bekas berkualitas tinggi di Malang. Kami memberikan garansi dan layanan purna jual terbaik untuk setiap produk yang kami jual.
-            </p>
-          </div>
-          <div>
-            <h4 className="text-base font-bold mb-4 text-text-primary">Produk Kami</h4>
-            <ul className="text-text-secondary text-sm space-y-3">
-              <li><Link href="/" className="hover:text-primary transition-colors">Semua Laptop</Link></li>
-              <li><Link href="/" className="hover:text-primary transition-colors">Laptop Gaming</Link></li>
-              <li><Link href="/" className="hover:text-primary transition-colors">Laptop Kantoran</Link></li>
-              <li><Link href="/" className="hover:text-primary transition-colors">MacBook Second</Link></li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="text-base font-bold mb-4 text-text-primary">Informasi</h4>
-            <ul className="text-text-secondary text-sm space-y-3">
-              <li><Link href="/" className="hover:text-primary transition-colors">Tentang Kami</Link></li>
-              <li><Link href="/" className="hover:text-primary transition-colors">Syarat & Ketentuan Garansi</Link></li>
-              <li><Link href="/" className="hover:text-primary transition-colors">Kebijakan Pengembalian</Link></li>
-              <li><Link href="/" className="hover:text-primary transition-colors">Hubungi Kami</Link></li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="text-base font-bold mb-4 text-text-primary">Hubungi Kami</h4>
-            <ul className="text-text-secondary text-sm space-y-3">
-              <li>0895-6267-52967</li>
-              <li>info@laptopsecondmalang.com</li>
-              <li className="leading-relaxed">Jl. Mayjend Panjaitan No.111, Penanggungan, Kec. Klojen, Kota Malang, Jawa Timur 65113</li>
-            </ul>
-          </div>
-        </div>
-        <div className="bg-surface py-6 border-t border-border text-xs text-text-secondary">
-          <div className="container mx-auto px-4 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
-            <span>&copy; {new Date().getFullYear()} Laptop Second Malang. All Rights Reserved.</span>
-            <div className="flex flex-wrap justify-center gap-2 items-center">
-              <span>Pembayaran Aman:</span>
-              <span className="font-medium text-text-primary">BCA / Mandiri / BNI / COD</span>
-            </div>
-          </div>
-        </div>
+      {/* Simple Footer inside 600px */}
+      <footer className="bg-slate-50 border-t border-slate-200 mt-auto px-4 py-8 text-center text-xs text-slate-500">
+        <p className="mb-2 font-bold text-slate-700">Laptop Second Malang</p>
+        <p className="mb-4">Jl. Mayjend Panjaitan No.111, Penanggungan, Kec. Klojen, Kota Malang</p>
+        <p>&copy; {new Date().getFullYear()} Hak Cipta Dilindungi.</p>
       </footer>
 
     </div>

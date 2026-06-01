@@ -28,8 +28,12 @@ export default function RootLayout({
       className={`${inter.variable} ${outfit.variable} h-full antialiased`}
       suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col bg-surface text-text-primary overflow-x-hidden" suppressHydrationWarning>
-        {children}
+      <body
+        className={`${inter.variable} ${outfit.variable} antialiased bg-slate-100 text-slate-900 min-h-screen flex justify-center`}
+      >
+        <div className="w-full max-w-[600px] bg-white min-h-screen shadow-2xl relative overflow-x-hidden flex flex-col">
+          {children}
+        </div>
       </body>
     </html>
   );
