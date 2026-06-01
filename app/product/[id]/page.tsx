@@ -54,22 +54,24 @@ export default async function ProductDetail({ params }: { params: Promise<{ id: 
     <div className="flex flex-col min-h-screen">
       <Navbar />
       
-      <div className="container mx-auto px-4 lg:px-8 py-4 pb-36 flex-grow">
-        <nav className="py-1 mb-4">
-          <Link href="/" className="inline-flex items-center gap-2 text-slate-500 hover:text-blue-600 transition-colors font-medium text-xs">
-            &larr; Kembali ke Katalog
-          </Link>
-        </nav>
+      <div className="flex flex-col flex-grow pb-36">
+        <div className="container mx-auto px-4 lg:px-8 pt-4 pb-2">
+          <nav className="py-1">
+            <Link href="/" className="inline-flex items-center gap-2 text-slate-500 hover:text-blue-600 transition-colors font-medium text-xs">
+              &larr; Kembali ke Katalog
+            </Link>
+          </nav>
+        </div>
 
-        <div className="flex flex-col gap-6 mt-1">
-        {/* Product Image Gallery Edge-to-Edge */}
-        <div className="-mx-4 lg:-mx-8">
+        <div className="w-full">
+          {/* Product Image Gallery Edge-to-Edge */}
           <ProductGallery images={product.images || []} />
         </div>
 
-        {/* Product Info */}
-        <div className="flex flex-col">
-          <div className="mb-4">
+        <div className="container mx-auto px-4 lg:px-8 mt-6">
+          {/* Product Info */}
+          <div className="flex flex-col">
+            <div className="mb-4">
             <div className="flex flex-wrap gap-2 sm:gap-3 mb-3 items-center">
               <span className="text-[10px] border border-border bg-white px-2 py-0.5 rounded font-semibold text-text-secondary uppercase tracking-wider">{product.brand}</span>
               <span className="text-[10px] bg-surface border border-border px-2 py-0.5 rounded font-semibold text-text-primary">{product.condition}</span>
@@ -114,6 +116,7 @@ export default async function ProductDetail({ params }: { params: Promise<{ id: 
             </div>
           </div>
         </div>
+        </div>
       </div>
       
       {/* Fixed Bottom Action Bar */}
@@ -129,7 +132,6 @@ export default async function ProductDetail({ params }: { params: Promise<{ id: 
         <a href={waLink} target="_blank" rel="noopener noreferrer" className="w-full flex items-center justify-center bg-green-500 hover:bg-green-600 text-white rounded-lg font-bold text-sm transition-colors h-12">
           Konsultasi via WhatsApp
         </a>
-      </div>
       </div>
     </div>
   );
