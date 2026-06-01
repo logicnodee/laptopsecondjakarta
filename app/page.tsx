@@ -29,23 +29,23 @@ export default async function Home() {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="bg-white py-16 sm:py-20 border-b border-border">
+      <section className="bg-white py-10 sm:py-16 border-b border-border">
         <div className="container mx-auto px-4 lg:px-8 text-center max-w-3xl">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-text-primary leading-tight mb-4 sm:mb-6 font-[family-name:var(--font-outfit)]">
+          <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-text-primary leading-tight mb-4 sm:mb-6 font-[family-name:var(--font-outfit)]">
             Upgrade Harimu dengan Performa Maksimal
           </h2>
-          <p className="text-base sm:text-lg md:text-xl text-text-secondary mb-8 sm:mb-10 leading-relaxed">
+          <p className="text-sm sm:text-base md:text-lg text-text-secondary mb-6 sm:mb-10 leading-relaxed">
             Pusat laptop second terpercaya di Malang. Kami menyediakan laptop untuk sekolah, bisnis, hingga gaming berat dengan harga terbaik dan jaminan kepuasan.
           </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 w-full">
-            <button className="btn btn-primary px-8 py-3 w-full sm:w-auto">Belanja Sekarang</button>
-            <button className="btn btn-outline px-8 py-3 w-full sm:w-auto">Lihat Panduan</button>
+          <div className="flex flex-col sm:flex-row justify-center gap-3 w-full">
+            <button className="btn btn-primary px-6 py-2.5 w-full sm:w-auto text-sm">Belanja Sekarang</button>
+            <button className="btn btn-outline px-6 py-2.5 w-full sm:w-auto text-sm">Lihat Panduan</button>
           </div>
         </div>
       </section>
 
       {/* Products Grid */}
-      <main className="container mx-auto px-4 lg:px-8 mt-16 mb-24 flex-grow">
+      <main className="container mx-auto px-4 lg:px-8 mt-12 mb-20 flex-grow">
         <div className="flex justify-between items-end mb-8 border-b border-border pb-4">
           <div>
             <h3 className="text-2xl font-bold text-text-primary m-0 font-[family-name:var(--font-outfit)]">Koleksi Pilihan</h3>
@@ -72,13 +72,13 @@ export default async function Home() {
                   </span>
                 </div>
               </div>
-              <div className="flex flex-col p-5 flex-grow">
-                <div className="mb-4">
-                  <span className="text-xs text-text-secondary font-semibold uppercase tracking-wider">{product.brand}</span>
-                  <h4 className="text-lg font-bold text-primary mt-1 leading-tight line-clamp-2 hover:underline cursor-pointer">{product.title}</h4>
+              <div className="flex flex-col p-4 flex-grow">
+                <div className="mb-3">
+                  <span className="text-[10px] text-text-secondary font-semibold uppercase tracking-wider">{product.brand}</span>
+                  <h4 className="text-base font-bold text-primary mt-1 leading-tight line-clamp-2 hover:underline cursor-pointer">{product.title}</h4>
                 </div>
                 
-                <div className="text-sm text-text-secondary mb-6 flex-grow">
+                <div className="text-xs text-text-secondary mb-4 flex-grow">
                   <div className="flex flex-col gap-1">
                     <div>Prosesor: {product.processor}</div>
                     <div>RAM: {product.ram}</div>
@@ -86,13 +86,13 @@ export default async function Home() {
                   </div>
                 </div>
 
-                <div className="mt-auto pt-4 border-t border-border flex justify-between items-center mb-4">
-                  <p className="text-xl font-bold text-text-primary m-0">
+                <div className="mt-auto pt-3 border-t border-border flex justify-between items-center mb-3">
+                  <p className="text-lg font-bold text-text-primary m-0">
                     Rp {product.price.toLocaleString('id-ID')}
                   </p>
                 </div>
 
-                <Link href={`/product/${product.id}`} className="btn btn-outline w-full text-center">
+                <Link href={`/product/${product.id}`} className="btn btn-outline w-full text-center py-2 text-sm">
                   Lihat Detail
                 </Link>
               </div>
@@ -131,13 +131,13 @@ export default async function Home() {
           <div>
             <h4 className="text-base font-bold mb-4 text-text-primary">Hubungi Kami</h4>
             <ul className="text-text-secondary text-sm space-y-3">
-              <li>0812-3456-7890</li>
+              <li>0895-6267-52967</li>
               <li>info@laptopsecondmalang.com</li>
-              <li>Jl. Contoh Lokasi No. 123, Malang, Jawa Timur</li>
+              <li className="leading-relaxed">Jl. Mayjend Panjaitan No.111, Penanggungan, Kec. Klojen, Kota Malang, Jawa Timur 65113</li>
             </ul>
           </div>
         </div>
-        <div className="bg-surface py-6 border-t border-border text-sm text-text-secondary">
+        <div className="bg-surface py-6 border-t border-border text-xs text-text-secondary">
           <div className="container mx-auto px-4 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
             <span>&copy; {new Date().getFullYear()} Laptop Second Malang. All Rights Reserved.</span>
             <div className="flex flex-wrap justify-center gap-2 items-center">

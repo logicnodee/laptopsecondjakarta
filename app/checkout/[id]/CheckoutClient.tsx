@@ -30,7 +30,7 @@ export default function CheckoutClient({ product }: { product: any }) {
           
           <div>
             <label className="block text-sm font-medium text-text-secondary mb-2">Nomor WhatsApp Aktif</label>
-            <input type="text" name="whatsappNumber" required className="input bg-surface" placeholder="081234567890" />
+            <input type="text" name="whatsappNumber" required className="input bg-surface" placeholder="0895626752967" />
           </div>
 
           <div>

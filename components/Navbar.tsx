@@ -48,11 +48,11 @@ export default function Navbar() {
 
             {/* Desktop Actions */}
             <div className="hidden md:flex items-center gap-6 flex-shrink-0">
-              <a href="tel:081234567890" className="text-slate-600 hover:text-blue-600 transition-colors font-medium text-sm flex items-center gap-2">
+              <a href="tel:+62895626752967" className="text-slate-600 hover:text-blue-600 transition-colors font-medium text-sm flex items-center gap-2">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-2.896-1.596-5.48-4.08-7.076-6.975l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
                 </svg>
-                0812-3456-7890
+                0895-6267-52967
               </a>
               <Link href="/admin" className="btn btn-primary">Hubungi Kami</Link>
             </div>
@@ -96,26 +96,24 @@ export default function Navbar() {
               <input 
                 type="text" 
                 placeholder="Cari laptop..." 
-                className="w-full pl-4 pr-10 py-2.5 bg-slate-50 border border-slate-300 rounded-lg text-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+                className="w-full pl-3 pr-8 py-2 bg-slate-50 border border-slate-300 rounded-md text-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
               />
               {/* Mobile Menu Links */}
-              <nav className="flex flex-col">
-                <Link href="/products" className="py-3 border-b border-slate-100 text-slate-700 font-medium hover:text-blue-600">
-                  Semua Laptop
-                </Link>
-                <Link href="/" className="py-3 border-b border-slate-100 text-slate-700 font-medium hover:text-blue-600">Laptop Gaming</Link>
-                <Link href="/" className="block py-2 text-slate-600 font-medium border-b border-slate-100">Kebutuhan Kuliah</Link>
-                <Link href="/" className="block py-2 text-slate-600 font-medium border-b border-slate-100">Desain Grafis</Link>
-                <Link href="/" className="block py-2 text-slate-600 font-medium">Di Bawah 4 Juta</Link>
+              <nav className="flex flex-col mt-2">
+                <Link href="/products" className="py-2 border-b border-slate-100 text-slate-700 text-sm font-medium hover:text-blue-600">Semua Laptop</Link>
+                <Link href="/" className="py-2 border-b border-slate-100 text-slate-700 text-sm font-medium hover:text-blue-600">Laptop Gaming</Link>
+                <Link href="/" className="block py-2 text-slate-600 text-sm font-medium border-b border-slate-100">Kebutuhan Kuliah</Link>
+                <Link href="/" className="block py-2 text-slate-600 text-sm font-medium border-b border-slate-100">Desain Grafis</Link>
+                <Link href="/" className="block py-2 text-slate-600 text-sm font-medium">Di Bawah 4 Juta</Link>
               </nav>
             </div>
             
-            <div className="pt-4 border-t border-slate-200 flex flex-col gap-3">
-              <a href="tel:081234567890" className="text-slate-600 font-medium py-2 flex items-center justify-center gap-2 border border-slate-300 rounded-lg">
-                Hubungi 0812-3456-7890
+            <div className="pt-3 border-t border-slate-200 flex flex-col gap-2">
+              <a href="tel:+62895626752967" className="text-slate-600 text-sm font-medium py-2 flex items-center justify-center gap-2 border border-slate-300 rounded-md">
+                Hubungi 0895-6267-52967
               </a>
-              <Link href="/admin" className="btn btn-primary w-full">Hubungi Penjual</Link>
-              <Link href="/admin" className="text-sm text-center text-slate-500 mt-2">Login Admin</Link>
+              <Link href="/admin" className="btn btn-primary w-full py-2 text-sm rounded-md">Hubungi Penjual</Link>
+              <Link href="/admin" className="text-xs text-center text-slate-500 mt-1">Login Admin</Link>
             </div>
           </div>
         )}

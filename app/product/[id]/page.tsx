@@ -36,7 +36,7 @@ export default async function ProductDetail({ params }: { params: Promise<{ id: 
   }
 
   // Format WhatsApp message
-  const waNumber = "6281234567890"; // Ganti dengan nomor WA admin
+  const waNumber = "62895626752967"; // Nomor WA Admin Baru
   const waMessage = encodeURIComponent(`Halo, saya tertarik dengan laptop: \n*${product.title}*\nHarga: Rp ${product.price.toLocaleString('id-ID')}\nApakah masih tersedia?`);
   const waLink = `https://wa.me/${waNumber}?text=${waMessage}`;
 
@@ -102,11 +102,11 @@ export default async function ProductDetail({ params }: { params: Promise<{ id: 
             </div>
           </div>
 
-          <div className="flex gap-4 mt-auto">
-            <Link href={`/checkout/${product.id}`} className="btn btn-primary flex-1 text-center py-4">
+          <div className="flex flex-col sm:flex-row gap-3 mt-auto">
+            <Link href={`/checkout/${product.id}`} className="btn btn-primary flex-1 text-center py-3.5">
               Beli Sekarang
             </Link>
-            <a href={waLink} target="_blank" rel="noopener noreferrer" className="btn bg-green-600 hover:bg-green-700 text-white flex-1 text-center py-4 rounded font-semibold transition-colors">
+            <a href={waLink} target="_blank" rel="noopener noreferrer" className="btn bg-green-600 hover:bg-green-700 text-white flex-1 text-center py-3.5 rounded-lg font-semibold transition-colors">
               Konsultasi ke WA
             </a>
           </div>
