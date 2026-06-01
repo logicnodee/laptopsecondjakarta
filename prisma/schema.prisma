@@ -21,6 +21,7 @@ model Product {
   createdAt   DateTime       @default(now())
   updatedAt   DateTime       @updatedAt
   images      ProductImage[]
+  orders      Order[]
 }
 
 model ProductImage {
@@ -29,4 +30,17 @@ model ProductImage {
   productId Int
   product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
   createdAt DateTime @default(now())
+}
+
+model Order {
+  id              Int      @id @default(autoincrement())
+  whatsappNumber  String
+  address         String
+  deliveryMethod  String   // "Toko" or "Ojol"
+  paymentProofUrl String
+  status          String   @default("Menunggu Konfirmasi") // Menunggu Konfirmasi, Berhasil, Gagal
+  productId       Int
+  product         Product  @relation(fields: [productId], references: [id])
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
 }

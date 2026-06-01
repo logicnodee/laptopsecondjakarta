@@ -102,9 +102,14 @@ export default async function ProductDetail({ params }: { params: Promise<{ id: 
             </div>
           </div>
 
-          <a href={waLink} target="_blank" rel="noopener noreferrer" className="btn btn-primary w-full text-center py-4 mt-auto">
-            Hubungi Penjual via WhatsApp
-          </a>
+          <div className="flex gap-4 mt-auto">
+            <Link href={`/checkout/${product.id}`} className="btn btn-primary flex-1 text-center py-4">
+              Beli Sekarang
+            </Link>
+            <a href={waLink} target="_blank" rel="noopener noreferrer" className="btn bg-green-600 hover:bg-green-700 text-white flex-1 text-center py-4 rounded font-semibold transition-colors">
+              Konsultasi ke WA
+            </a>
+          </div>
         </div>
       </div>
       </div>

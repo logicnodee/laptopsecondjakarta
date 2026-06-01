@@ -13,7 +13,12 @@ export default async function AdminPage() {
       <Navbar />
       <div className="container mx-auto px-4 lg:px-8 py-10 flex-grow">
         <div className="flex justify-between items-center py-4 mb-8 border-b border-border">
-          <h2 className="text-2xl font-bold text-primary m-0 font-[family-name:var(--font-outfit)]">Admin Dashboard</h2>
+          <div className="flex items-center gap-4">
+            <h2 className="text-2xl font-bold text-primary m-0 font-[family-name:var(--font-outfit)]">Admin Dashboard</h2>
+            <Link href="/admin/orders" className="text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded transition-colors">
+              Lihat Pesanan
+            </Link>
+          </div>
         </div>
 
       <div className="grid grid-cols-1 xl:grid-cols-3 gap-8">
