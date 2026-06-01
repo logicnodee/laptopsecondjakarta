@@ -53,13 +53,13 @@ export default function Sidebar() {
             <Link href="/" onClick={closeSidebar} className="px-6 py-3 text-slate-700 hover:bg-slate-50 hover:text-blue-700 font-medium transition-colors">
               Home
             </Link>
-            <Link href="/?brand=Asus" onClick={closeSidebar} className="px-6 py-3 text-slate-700 hover:bg-slate-50 hover:text-blue-700 font-medium transition-colors">
+            <Link href="/products?brand=Asus" onClick={closeSidebar} className="px-6 py-3 text-slate-700 hover:bg-slate-50 hover:text-blue-700 font-medium transition-colors">
               Asus
             </Link>
-            <Link href="/?brand=Lenovo" onClick={closeSidebar} className="px-6 py-3 text-slate-700 hover:bg-slate-50 hover:text-blue-700 font-medium transition-colors">
+            <Link href="/products?brand=Lenovo" onClick={closeSidebar} className="px-6 py-3 text-slate-700 hover:bg-slate-50 hover:text-blue-700 font-medium transition-colors">
               Lenovo
             </Link>
-            <Link href="/?brand=HP" onClick={closeSidebar} className="px-6 py-3 text-slate-700 hover:bg-slate-50 hover:text-blue-700 font-medium transition-colors">
+            <Link href="/products?brand=HP" onClick={closeSidebar} className="px-6 py-3 text-slate-700 hover:bg-slate-50 hover:text-blue-700 font-medium transition-colors">
               HP
             </Link>
             
@@ -82,19 +82,19 @@ export default function Sidebar() {
               
               <div className={`overflow-hidden transition-all duration-300 bg-slate-50 ${isInfoOpen ? "max-h-64" : "max-h-0"}`}>
                 <div className="flex flex-col py-2">
-                  <a href="#" onClick={closeSidebar} className="px-10 py-2.5 text-sm text-slate-600 hover:text-blue-700">Alamat Toko</a>
-                  <a href="#" onClick={closeSidebar} className="px-10 py-2.5 text-sm text-slate-600 hover:text-blue-700">Cek Ongkir</a>
-                  <a href="#" onClick={closeSidebar} className="px-10 py-2.5 text-sm text-slate-600 hover:text-blue-700">Cek Kiriman</a>
-                  <a href="#" onClick={closeSidebar} className="px-10 py-2.5 text-sm text-slate-600 hover:text-blue-700">Syarat & Ketentuan</a>
-                  <a href="#" onClick={closeSidebar} className="px-10 py-2.5 text-sm text-slate-600 hover:text-blue-700">FAQ</a>
+                  <a href="https://maps.app.goo.gl/DE8bEzh1s7V8bHW88" target="_blank" rel="noopener noreferrer" onClick={closeSidebar} className="px-10 py-2.5 text-sm text-slate-600 hover:text-blue-700">Alamat Toko</a>
+                  <a href="https://wa.me/62895626752967?text=Halo,%20saya%20ingin%20cek%20ongkir..." target="_blank" rel="noopener noreferrer" onClick={closeSidebar} className="px-10 py-2.5 text-sm text-slate-600 hover:text-blue-700">Cek Ongkir</a>
+                  <a href="https://wa.me/62895626752967?text=Halo,%20saya%20ingin%20cek%20resi%20kiriman..." target="_blank" rel="noopener noreferrer" onClick={closeSidebar} className="px-10 py-2.5 text-sm text-slate-600 hover:text-blue-700">Cek Kiriman</a>
+                  <Link href="/info?topic=syarat" onClick={closeSidebar} className="px-10 py-2.5 text-sm text-slate-600 hover:text-blue-700">Syarat & Ketentuan</Link>
+                  <Link href="/info?topic=faq" onClick={closeSidebar} className="px-10 py-2.5 text-sm text-slate-600 hover:text-blue-700">FAQ</Link>
                 </div>
               </div>
             </div>
 
-            <a href="#" onClick={closeSidebar} className="px-6 py-3 text-slate-700 hover:bg-slate-50 hover:text-blue-700 font-medium transition-colors">
+            <a href="https://wa.me/62895626752967?text=Halo,%20saya%20ingin%20konfirmasi%20pembayaran..." target="_blank" rel="noopener noreferrer" onClick={closeSidebar} className="px-6 py-3 text-slate-700 hover:bg-slate-50 hover:text-blue-700 font-medium transition-colors">
               Konfirmasi Pembayaran
             </a>
-            <a href="#" onClick={closeSidebar} className="px-6 py-3 text-slate-700 hover:bg-slate-50 hover:text-blue-700 font-medium transition-colors">
+            <a href="https://wa.me/62895626752967" target="_blank" rel="noopener noreferrer" onClick={closeSidebar} className="px-6 py-3 text-slate-700 hover:bg-slate-50 hover:text-blue-700 font-medium transition-colors">
               Hubungi Kami
             </a>
           </nav>
