@@ -17,6 +17,8 @@ export const metadata: Metadata = {
   description: "Pusat laptop second berkualitas tinggi di Malang. Bersih, rapi, dan bergaransi.",
 };
 
+import BottomNav from "@/components/BottomNav";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -31,8 +33,9 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${outfit.variable} antialiased bg-slate-100 text-slate-900 min-h-screen flex justify-center`}
       >
-        <div className="w-full max-w-[600px] bg-white min-h-screen shadow-2xl relative overflow-x-hidden flex flex-col">
+        <div className="w-full max-w-[600px] bg-white min-h-screen shadow-2xl relative overflow-x-hidden flex flex-col pb-20">
           {children}
+          <BottomNav />
         </div>
       </body>
     </html>
