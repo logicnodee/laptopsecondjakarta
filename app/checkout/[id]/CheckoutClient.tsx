@@ -8,9 +8,9 @@ export default function CheckoutClient({ product }: { product: any }) {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+    <div className="flex flex-col gap-6">
       {/* Checkout Form */}
-      <div className="lg:col-span-2 clean-card p-4 lg:p-6">
+      <div className="clean-card p-4 lg:p-6">
         <h2 className="text-xl font-bold text-primary mb-4 border-b border-border pb-3 font-[family-name:var(--font-outfit)]">Detail Pengiriman & Pembayaran</h2>
         
         <form 
