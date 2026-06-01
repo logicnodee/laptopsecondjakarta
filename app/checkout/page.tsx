@@ -95,29 +95,8 @@ export default function CheckoutPage() {
                 </div>
               )}
 
-              <div className="border-t border-slate-200 mt-1 pt-4">
-                <h3 className="text-base font-bold text-slate-800 mb-3">Informasi Pembayaran</h3>
-                <div className="bg-slate-50 p-4 rounded-lg border border-slate-200 mb-4">
-                  <p className="text-xs text-slate-500 mb-2">Silakan transfer sesuai dengan total pembayaran ke rekening berikut:</p>
-                  <div className="flex items-center gap-3 mt-2">
-                    <div className="w-14 h-8 bg-white border border-slate-200 rounded flex items-center justify-center font-bold text-blue-800 text-xs shadow-sm">
-                      BCA
-                    </div>
-                    <div>
-                      <p className="font-bold text-base text-slate-800">8161511935</p>
-                      <p className="text-xs text-slate-500">a.n Mukhammad ayatulloh husaini</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-slate-600 mb-2">Unggah Bukti Pembayaran (Wajib)</label>
-                  <input type="file" name="paymentProof" accept="image/*" required className="w-full bg-white p-2 file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 border border-slate-200 rounded-lg" />
-                </div>
-              </div>
-
               {/* Order Summary placed here */}
-              <div className="border border-slate-200 rounded-lg p-4 mt-2 bg-slate-50">
+              <div className="border border-slate-200 rounded-lg p-4 mt-2 mb-2 bg-slate-50">
                 <h3 className="text-base font-bold text-slate-800 mb-3 border-b border-slate-200 pb-2">Ringkasan Pesanan</h3>
                 
                 <div className="flex flex-col gap-3 mb-4 max-h-[300px] overflow-y-auto pr-2">
@@ -155,6 +134,27 @@ export default function CheckoutPage() {
                     <span className="font-bold text-base text-slate-800">Total Pembayaran</span>
                     <span className="font-bold text-lg text-blue-600">Rp {totalPrice.toLocaleString('id-ID')}</span>
                   </div>
+                </div>
+              </div>
+
+              <div className="border-t border-slate-200 mt-1 pt-4">
+                <h3 className="text-base font-bold text-slate-800 mb-3">Informasi Pembayaran</h3>
+                <div className="bg-slate-50 p-4 rounded-lg border border-slate-200 mb-4">
+                  <p className="text-xs text-slate-500 mb-2">Silakan transfer sesuai dengan total pembayaran ke rekening berikut:</p>
+                  <div className="flex items-center gap-3 mt-2">
+                    <div className="w-14 h-8 bg-white border border-slate-200 rounded flex items-center justify-center font-bold text-blue-800 text-xs shadow-sm">
+                      BCA
+                    </div>
+                    <div>
+                      <p className="font-bold text-base text-slate-800">8161511935</p>
+                      <p className="text-xs text-slate-500">a.n Mukhammad ayatulloh husaini</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-slate-600 mb-2">Unggah Bukti Pembayaran (Wajib)</label>
+                  <input type="file" name="paymentProof" accept="image/*" required className="w-full bg-white p-2 file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 border border-slate-200 rounded-lg" />
                 </div>
               </div>
 
