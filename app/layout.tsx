@@ -18,6 +18,7 @@ export const metadata: Metadata = {
 };
 
 import BottomNav from "@/components/BottomNav";
+import { CartProvider } from "@/components/CartProvider";
 
 export default function RootLayout({
   children,
@@ -34,8 +35,10 @@ export default function RootLayout({
         className={`${inter.variable} ${outfit.variable} antialiased bg-slate-100 text-slate-900 min-h-screen flex justify-center`}
       >
         <div className="w-full max-w-[600px] bg-white min-h-screen shadow-2xl relative flex flex-col pb-20">
-          {children}
-          <BottomNav />
+          <CartProvider>
+            {children}
+            <BottomNav />
+          </CartProvider>
         </div>
       </body>
     </html>

@@ -9,6 +9,40 @@ export default function CheckoutClient({ product }: { product: any }) {
 
   return (
     <div className="flex flex-col gap-6">
+      {/* Order Summary */}
+      <div className="clean-card p-4 h-fit">
+        <h3 className="text-base font-bold text-primary mb-3 border-b border-border pb-2">Ringkasan Pesanan</h3>
+        <div className="flex gap-3 mb-4">
+          <div className="w-16 h-16 bg-surface rounded overflow-hidden flex-shrink-0 relative border border-border">
+            {product.images && product.images[0] ? (
+              <img src={product.images[0].url} alt={product.title} className="w-full h-full object-cover" />
+            ) : (
+              <div className="w-full h-full flex items-center justify-center text-text-secondary text-xs">No Image</div>
+            )}
+          </div>
+          <div>
+            <h4 className="font-semibold text-text-primary line-clamp-2">{product.title}</h4>
+            <p className="text-sm text-text-secondary mt-1">{product.condition}</p>
+          </div>
+        </div>
+        
+        <div className="border-t border-border pt-3">
+          <div className="flex justify-between items-center mb-1 text-sm">
+            <span className="text-text-secondary">Harga Produk</span>
+            <span className="font-medium">Rp {product.price.toLocaleString('id-ID')}</span>
+          </div>
+          <div className="flex justify-between items-center mb-3 text-sm">
+            <span className="text-text-secondary">Pengiriman ({deliveryMethod === "Toko" ? "Toko" : "Ojol"})</span>
+            <span className="font-medium text-green-600">Rp 0</span>
+          </div>
+          
+          <div className="flex justify-between items-center border-t border-border pt-3">
+            <span className="font-bold text-base text-primary">Total</span>
+            <span className="font-bold text-lg text-primary">Rp {product.price.toLocaleString('id-ID')}</span>
+          </div>
+        </div>
+      </div>
+
       {/* Checkout Form */}
       <div className="clean-card p-4 lg:p-6">
         <h2 className="text-xl font-bold text-primary mb-4 border-b border-border pb-3 font-[family-name:var(--font-outfit)]">Detail Pengiriman & Pembayaran</h2>
@@ -85,40 +119,6 @@ export default function CheckoutClient({ product }: { product: any }) {
             {isSubmitting ? "Memproses..." : "Konfirmasi Pembayaran"}
           </button>
         </form>
-      </div>
-
-      {/* Order Summary */}
-      <div className="clean-card p-4 h-fit">
-        <h3 className="text-base font-bold text-primary mb-3 border-b border-border pb-2">Ringkasan Pesanan</h3>
-        <div className="flex gap-3 mb-4">
-          <div className="w-16 h-16 bg-surface rounded overflow-hidden flex-shrink-0 relative border border-border">
-            {product.images && product.images[0] ? (
-              <img src={product.images[0].url} alt={product.title} className="w-full h-full object-cover" />
-            ) : (
-              <div className="w-full h-full flex items-center justify-center text-text-secondary text-xs">No Image</div>
-            )}
-          </div>
-          <div>
-            <h4 className="font-semibold text-text-primary line-clamp-2">{product.title}</h4>
-            <p className="text-sm text-text-secondary mt-1">{product.condition}</p>
-          </div>
-        </div>
-        
-        <div className="border-t border-border pt-3">
-          <div className="flex justify-between items-center mb-1 text-sm">
-            <span className="text-text-secondary">Harga Produk</span>
-            <span className="font-medium">Rp {product.price.toLocaleString('id-ID')}</span>
-          </div>
-          <div className="flex justify-between items-center mb-3 text-sm">
-            <span className="text-text-secondary">Pengiriman ({deliveryMethod === "Toko" ? "Toko" : "Ojol"})</span>
-            <span className="font-medium text-green-600">Rp 0</span>
-          </div>
-          
-          <div className="flex justify-between items-center border-t border-border pt-3">
-            <span className="font-bold text-base text-primary">Total</span>
-            <span className="font-bold text-lg text-primary">Rp {product.price.toLocaleString('id-ID')}</span>
-          </div>
-        </div>
       </div>
     </div>
   );

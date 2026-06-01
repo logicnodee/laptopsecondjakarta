@@ -19,6 +19,7 @@ export default function ProductGallery({ images }: { images: { url: string }[] }
       <div className="w-full bg-slate-50 border-y border-slate-200 flex items-center justify-center">
         <div className="relative w-full aspect-square max-h-[320px] sm:max-h-[400px]">
           <img 
+            id="main-product-image"
             src={images[activeIndex].url} 
             alt={`Product image ${activeIndex + 1}`} 
             className="w-full h-full object-contain absolute inset-0 transition-opacity duration-300"

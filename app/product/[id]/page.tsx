@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import prisma from "@/lib/prisma";
 import Navbar from "@/components/Navbar";
 import ProductGallery from "@/components/ProductGallery";
+import ProductActionBar from "@/components/ProductActionBar";
 
 export default async function ProductDetail({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
@@ -119,20 +120,7 @@ export default async function ProductDetail({ params }: { params: Promise<{ id: 
         </div>
       </div>
       
-      {/* Fixed Bottom Action Bar */}
-      <div className="fixed bottom-0 w-full max-w-[600px] bg-white border-t border-slate-200 p-2.5 flex flex-col gap-2 z-50 rounded-t-xl shadow-[0_-10px_15px_-3px_rgba(0,0,0,0.1)]">
-        <div className="flex gap-2 w-full">
-          <button className="flex-1 flex items-center justify-center border-2 border-slate-200 text-slate-700 hover:bg-slate-50 hover:border-slate-300 rounded-lg font-bold text-[13px] h-10 transition-colors">
-            + Keranjang
-          </button>
-          <Link href={`/checkout/${product.id}`} className="flex-1 flex items-center justify-center bg-[#2b2b2b] hover:bg-black text-white rounded-lg font-bold text-[13px] h-10 transition-colors">
-            Beli Sekarang
-          </Link>
-        </div>
-        <a href={waLink} target="_blank" rel="noopener noreferrer" className="w-full flex items-center justify-center bg-green-500 hover:bg-green-600 text-white rounded-lg font-bold text-[13px] transition-colors h-10">
-          Konsultasi via WhatsApp
-        </a>
-      </div>
+      <ProductActionBar product={product} waLink={waLink} />
     </div>
   );
 }
