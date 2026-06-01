@@ -42,48 +42,6 @@ export default function CheckoutPage() {
         <h1 className="text-xl font-bold text-slate-800 mb-6 font-[family-name:var(--font-outfit)]">Checkout</h1>
 
         <div className="flex flex-col gap-6">
-          {/* Order Summary */}
-          <div className="bg-white p-4 lg:p-6 rounded-xl border border-slate-200 shadow-sm h-fit">
-            <h3 className="text-base font-bold text-slate-800 mb-3 border-b border-slate-100 pb-2">Ringkasan Pesanan</h3>
-            
-            <div className="flex flex-col gap-3 mb-4 max-h-[300px] overflow-y-auto pr-2">
-              {cartItems.map((item) => (
-                <div key={item.id} className="flex gap-3">
-                  <div className="w-16 h-16 bg-slate-50 rounded overflow-hidden flex-shrink-0 relative border border-slate-200">
-                    {item.image ? (
-                      <img src={item.image} alt={item.title} className="w-full h-full object-contain p-1 absolute inset-0" />
-                    ) : (
-                      <div className="w-full h-full flex items-center justify-center text-slate-400 text-xs">No img</div>
-                    )}
-                  </div>
-                  <div className="flex-grow flex flex-col justify-center">
-                    <h4 className="font-semibold text-slate-800 line-clamp-2 text-sm">{item.title}</h4>
-                    <div className="flex justify-between items-center mt-1">
-                      <span className="text-xs text-slate-500">{item.quantity}x</span>
-                      <span className="text-sm font-bold text-blue-600">Rp {(item.price * item.quantity).toLocaleString('id-ID')}</span>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-            
-            <div className="border-t border-slate-200 pt-3">
-              <div className="flex justify-between items-center mb-1 text-sm">
-                <span className="text-slate-500">Total Harga Produk</span>
-                <span className="font-medium text-slate-800">Rp {totalPrice.toLocaleString('id-ID')}</span>
-              </div>
-              <div className="flex justify-between items-center mb-3 text-sm">
-                <span className="text-slate-500">Pengiriman ({deliveryMethod === "Toko" ? "Ambil di Toko" : "Ojek Online"})</span>
-                <span className="font-medium text-green-600">Rp 0</span>
-              </div>
-              
-              <div className="flex justify-between items-center border-t border-slate-200 pt-3">
-                <span className="font-bold text-base text-slate-800">Total Pembayaran</span>
-                <span className="font-bold text-lg text-blue-600">Rp {totalPrice.toLocaleString('id-ID')}</span>
-              </div>
-            </div>
-          </div>
-
           {/* Checkout Form */}
           <div className="bg-white p-4 lg:p-6 rounded-xl border border-slate-200 shadow-sm">
             <h2 className="text-xl font-bold text-slate-800 mb-4 border-b border-slate-100 pb-3 font-[family-name:var(--font-outfit)]">Detail Pengiriman & Pembayaran</h2>
@@ -155,6 +113,48 @@ export default function CheckoutPage() {
                 <div>
                   <label className="block text-sm font-medium text-slate-600 mb-2">Unggah Bukti Pembayaran (Wajib)</label>
                   <input type="file" name="paymentProof" accept="image/*" required className="w-full bg-white p-2 file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 border border-slate-200 rounded-lg" />
+                </div>
+              </div>
+
+              {/* Order Summary placed here */}
+              <div className="border border-slate-200 rounded-lg p-4 mt-2 bg-slate-50">
+                <h3 className="text-base font-bold text-slate-800 mb-3 border-b border-slate-200 pb-2">Ringkasan Pesanan</h3>
+                
+                <div className="flex flex-col gap-3 mb-4 max-h-[300px] overflow-y-auto pr-2">
+                  {cartItems.map((item) => (
+                    <div key={item.id} className="flex gap-3">
+                      <div className="w-16 h-16 bg-white rounded overflow-hidden flex-shrink-0 relative border border-slate-200">
+                        {item.image ? (
+                          <img src={item.image} alt={item.title} className="w-full h-full object-contain p-1 absolute inset-0" />
+                        ) : (
+                          <div className="w-full h-full flex items-center justify-center text-slate-400 text-xs">No img</div>
+                        )}
+                      </div>
+                      <div className="flex-grow flex flex-col justify-center">
+                        <h4 className="font-semibold text-slate-800 line-clamp-2 text-sm">{item.title}</h4>
+                        <div className="flex justify-between items-center mt-1">
+                          <span className="text-xs text-slate-500">{item.quantity}x</span>
+                          <span className="text-sm font-bold text-blue-600">Rp {(item.price * item.quantity).toLocaleString('id-ID')}</span>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                
+                <div className="border-t border-slate-200 pt-3">
+                  <div className="flex justify-between items-center mb-1 text-sm">
+                    <span className="text-slate-500">Total Harga Produk</span>
+                    <span className="font-medium text-slate-800">Rp {totalPrice.toLocaleString('id-ID')}</span>
+                  </div>
+                  <div className="flex justify-between items-center mb-3 text-sm">
+                    <span className="text-slate-500">Pengiriman ({deliveryMethod === "Toko" ? "Ambil di Toko" : "Ojek Online"})</span>
+                    <span className="font-medium text-green-600">Rp 0</span>
+                  </div>
+                  
+                  <div className="flex justify-between items-center border-t border-slate-200 pt-3">
+                    <span className="font-bold text-base text-slate-800">Total Pembayaran</span>
+                    <span className="font-bold text-lg text-blue-600">Rp {totalPrice.toLocaleString('id-ID')}</span>
+                  </div>
                 </div>
               </div>
 
