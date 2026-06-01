@@ -27,8 +27,8 @@ export default function Navbar() {
             
             {/* Logo */}
             <div className="flex-shrink-0 flex items-center">
-              <Link href="/" className="text-base sm:text-lg md:text-xl font-bold text-blue-700 tracking-tight font-[family-name:var(--font-outfit)]">
-                Laptop Second Malang
+              <Link href="/" className="flex items-center">
+                <img src="/logo.png" alt="Laptop Second Malang" className="h-8 md:h-10 w-auto object-contain" />
               </Link>
             </div>
             
