@@ -27,7 +27,7 @@ export default async function Home({
     whereClause.brand = { contains: brand };
   }
   if (search) {
-    whereClause.title = { contains: search, mode: "insensitive" };
+    whereClause.title = { contains: search };
   }
 
   let orderByClause: Prisma.ProductOrderByWithRelationInput = { createdAt: "desc" };
