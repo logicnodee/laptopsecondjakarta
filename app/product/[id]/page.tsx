@@ -46,7 +46,9 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
       imageUrl = originalUrl;
     }
   }
-  
+  const title = `${product.title} - Laptop Second Malang`;
+  const description = `Harga: Rp ${product.price.toLocaleString('id-ID')}. ${product.description || ""}`;
+
   return {
     title,
     description,
