@@ -83,8 +83,8 @@ export default function ProductFilters({ basePath = "/products" }: { basePath?: 
             }}
           >
             <option value="newest">Terbaru</option>
-            <option value="price_asc">Harga Terendah</option>
-            <option value="price_desc">Harga Tertinggi</option>
+            <option value="price_asc">Harga Termurah</option>
+            <option value="price_desc">Harga Termahal</option>
           </select>
         </div>
 
