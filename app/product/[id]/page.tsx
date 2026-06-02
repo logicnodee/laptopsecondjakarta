@@ -1,9 +1,68 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { Metadata } from "next";
 import prisma from "@/lib/prisma";
 import Navbar from "@/components/Navbar";
 import ProductGallery from "@/components/ProductGallery";
 import ProductActionBar from "@/components/ProductActionBar";
+import ShareButton from "@/components/ShareButton";
+
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
+  const { id } = await params;
+  
+  let product = null;
+  try {
+    product = await prisma.product.findUnique({
+      where: { id: parseInt(id) },
+      include: { images: true }
+    });
+  } catch (error) {
+    // ignore
+  }
+
+  if (!product) {
+    const dummyProducts = [
+      { id: 1, title: "Asus ROG Zephyrus G14", brand: "Asus", price: 14500000, description: "Laptop gaming super tipis dan kencang.", images: [{ url: "/merk/asus/asus.png" }] },
+      { id: 2, title: "Lenovo ThinkPad T490", brand: "Lenovo", price: 6200000, description: "Laptop bisnis legendaris.", images: [{ url: "/merk/lenovo/lenovo.png" }] },
+      { id: 3, title: "Asus Vivobook 14", brand: "Asus", price: 5500000, description: "Laptop pelajar dan mahasiswa.", images: [{ url: "/merk/asus/asus2.png" }] },
+      { id: 4, title: "HP Pavilion Gaming 15", brand: "HP", price: 8500000, description: "Laptop gaming budget.", images: [{ url: "/merk/hp/hp.png" }] },
+    ];
+    // @ts-ignore
+    product = dummyProducts.find(p => p.id === parseInt(id));
+  }
+
+  if (!product) {
+    return { title: "Produk Tidak Ditemukan" };
+  }
+
+  const title = `${product.title} - Laptop Second Malang`;
+  const description = `Harga: Rp ${product.price.toLocaleString('id-ID')}. ${product.description || ""}`;
+  const imageUrl = product.images && product.images.length > 0 ? product.images[0].url : "/logo.png";
+  
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      images: [
+        {
+          url: imageUrl,
+          width: 800,
+          height: 600,
+          alt: product.title,
+        }
+      ],
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [imageUrl],
+    },
+  };
+}
 
 export default async function ProductDetail({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
@@ -94,7 +153,13 @@ export default async function ProductDetail({ params }: { params: Promise<{ id: 
                 </span>
               )}
             </div>
-            <h1 className="text-xl md:text-2xl font-bold text-primary mb-2 leading-tight font-[family-name:var(--font-outfit)]">{product.title}</h1>
+            <div className="flex justify-between items-start gap-4">
+              <h1 className="text-xl md:text-2xl font-bold text-primary mb-2 leading-tight font-[family-name:var(--font-outfit)]">{product.title}</h1>
+              <ShareButton 
+                title={product.title} 
+                text={`Cek laptop ${product.title} di Laptop Second Malang. Harga: Rp ${product.price.toLocaleString('id-ID')}`} 
+              />
+            </div>
             <p className="text-xl font-bold text-text-primary mt-2">
               Rp {product.price.toLocaleString('id-ID')}
             </p>
