@@ -19,23 +19,27 @@ export default async function InfoPage({ searchParams }: { searchParams: Promise
           {topic === 'faq' ? (
             <div className="space-y-6">
               <div>
-                <h3 className="font-semibold text-slate-800 text-base mb-1">1. Apakah laptop bekas di sini bergaransi?</h3>
+                <h3 className="font-semibold text-slate-800 text-base mb-1">1. Apakah Laptop Second Malang memiliki toko fisik?</h3>
+                <p>Ya, Laptop Second Malang merupakan bagian dari <strong>Winner Komputer</strong>. Anda bisa datang langsung ke toko fisik kami untuk melihat dan mengecek unit laptop secara langsung.</p>
+              </div>
+              <div>
+                <h3 className="font-semibold text-slate-800 text-base mb-1">2. Apakah laptop bekas di sini bergaransi?</h3>
                 <p>Ya, semua laptop yang kami jual telah melewati proses pengecekan ketat (Quality Control) dan memiliki garansi toko selama 1 bulan (syarat & ketentuan berlaku).</p>
               </div>
               <div>
-                <h3 className="font-semibold text-slate-800 text-base mb-1">2. Apakah melayani tukar tambah (trade-in)?</h3>
+                <h3 className="font-semibold text-slate-800 text-base mb-1">3. Apakah melayani tukar tambah (trade-in)?</h3>
                 <p>Bisa, silakan bawa laptop lama Anda ke toko kami untuk dilakukan pengecekan dan penaksiran harga oleh tim kami.</p>
               </div>
               <div>
-                <h3 className="font-semibold text-slate-800 text-base mb-1">3. Bagaimana kondisi baterai laptopnya?</h3>
+                <h3 className="font-semibold text-slate-800 text-base mb-1">4. Bagaimana kondisi baterai laptopnya?</h3>
                 <p>Kondisi baterai bervariasi karena barang second, namun kami pastikan semua baterai masih dalam keadaan layak pakai dan kami selalu menginformasikan estimasi ketahanan baterai di deskripsi produk.</p>
               </div>
               <div>
-                <h3 className="font-semibold text-slate-800 text-base mb-1">4. Apakah melayani pengiriman?</h3>
+                <h3 className="font-semibold text-slate-800 text-base mb-1">5. Apakah melayani pengiriman?</h3>
                 <p>Saat ini kami hanya melayani pembelian di area Kota Malang dan Kabupaten Malang. Untuk pengiriman, Anda bisa datang langsung ke toko atau memesan layanan ojek online (Gojek/Grab/Maxim) dari pihak Anda (Customer yang memesan dan menanggung ongkirnya).</p>
               </div>
               <div>
-                <h3 className="font-semibold text-slate-800 text-base mb-1">5. Apakah harga masih bisa dinego?</h3>
+                <h3 className="font-semibold text-slate-800 text-base mb-1">6. Apakah harga masih bisa dinego?</h3>
                 <p>Harga yang tertera sudah merupakan harga terbaik, namun Anda bisa mendapatkan penawaran spesial pada saat kami mengadakan promo tertentu.</p>
               </div>
             </div>
