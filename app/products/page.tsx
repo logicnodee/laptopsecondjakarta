@@ -99,7 +99,7 @@ export default async function ProductsPage({ searchParams }: { searchParams: Pro
                 {displayProducts.map((product) => {
                   const isAvailable = product.status === 'Available' || product.status === 'Tersedia';
                   return (
-                    <div key={product.id} className="clean-card overflow-hidden flex flex-col group border border-slate-100 bg-white shadow-sm hover:shadow-md transition-shadow">
+                    <Link href={`/product/${product.id}`} key={product.id} className="clean-card overflow-hidden flex flex-col group border border-slate-100 bg-white shadow-sm hover:shadow-md transition-shadow cursor-pointer">
                       <div className="aspect-square w-full bg-white relative overflow-hidden flex items-center justify-center">
                         {product.images && product.images.length > 0 ? (
                           <img src={product.images[0].url} alt={product.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
@@ -119,7 +119,7 @@ export default async function ProductsPage({ searchParams }: { searchParams: Pro
 
                       <div className="flex flex-col p-4 flex-grow bg-white">
                         <div className="mb-2">
-                          <h4 className="text-sm font-semibold text-slate-800 mt-1 leading-snug line-clamp-2 hover:text-blue-600 cursor-pointer transition-colors">{product.title}</h4>
+                          <h4 className="text-sm font-semibold text-slate-800 mt-1 leading-snug line-clamp-2 group-hover:text-blue-600 transition-colors">{product.title}</h4>
                         </div>
                         
                         <div className="mt-auto pt-2 flex justify-between items-center mb-3">
@@ -128,11 +128,11 @@ export default async function ProductsPage({ searchParams }: { searchParams: Pro
                           </p>
                         </div>
 
-                        <Link href={`/product/${product.id}`} className={`w-full text-center py-2 text-sm font-medium transition-colors rounded ${isAvailable ? 'bg-[#2b2b2b] hover:bg-black text-white' : 'bg-slate-300 text-slate-500 cursor-not-allowed pointer-events-none'}`}>
+                        <div className={`w-full text-center py-2 text-sm font-medium transition-colors rounded ${isAvailable ? 'bg-[#2b2b2b] group-hover:bg-black text-white' : 'bg-slate-300 text-slate-500'}`}>
                           Beli
-                        </Link>
+                        </div>
                       </div>
-                    </div>
+                    </Link>
                   );
                 })}
               </div>
