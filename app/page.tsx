@@ -94,21 +94,21 @@ export default async function Home({
         </h3>
         
         <div className="grid grid-cols-3 gap-2">
-          <Link href="/?brand=Asus" className="flex flex-col items-center group cursor-pointer">
+          <Link href="/?brand=Asus#stok" scroll={true} className="flex flex-col items-center group cursor-pointer">
             <div className="w-16 h-16 sm:w-20 sm:h-20 bg-white rounded-xl shadow-sm border border-slate-100 p-2 flex items-center justify-center group-hover:shadow-md transition-shadow">
               <img src="/asus.png" alt="Asus" className="max-w-full max-h-full object-contain" />
             </div>
             <span className="text-[11px] mt-2 font-medium text-slate-600 group-hover:text-blue-600">Asus</span>
           </Link>
 
-          <Link href="/?brand=Lenovo" className="flex flex-col items-center group cursor-pointer">
+          <Link href="/?brand=Lenovo#stok" scroll={true} className="flex flex-col items-center group cursor-pointer">
             <div className="w-16 h-16 sm:w-20 sm:h-20 bg-white rounded-xl shadow-sm border border-slate-100 p-2 flex items-center justify-center group-hover:shadow-md transition-shadow">
               <img src="/lenovo.png" alt="Lenovo" className="max-w-full max-h-full object-contain" />
             </div>
             <span className="text-[11px] mt-2 font-medium text-slate-600 group-hover:text-blue-600">Lenovo</span>
           </Link>
 
-          <Link href="/?brand=HP" className="flex flex-col items-center group cursor-pointer">
+          <Link href="/?brand=HP#stok" scroll={true} className="flex flex-col items-center group cursor-pointer">
             <div className="w-16 h-16 sm:w-20 sm:h-20 bg-white rounded-xl shadow-sm border border-slate-100 p-2 flex items-center justify-center group-hover:shadow-md transition-shadow">
               <img src="/hp.png" alt="HP" className="max-w-full max-h-full object-contain" />
             </div>
@@ -125,10 +125,12 @@ export default async function Home({
       </section>
       
       {/* Products Section */}
-      <section className="w-full px-4 mb-20 flex-grow bg-white">
+      <section id="stok" className="w-full px-4 mb-20 flex-grow bg-white scroll-mt-24">
         <div className="flex flex-col mb-4 border-b border-slate-100 pb-4 gap-4">
           <div className="flex justify-between items-center">
-            <h2 className="text-lg font-bold text-slate-800 m-0">Semua Stok Laptop</h2>
+            <h2 className="text-lg font-bold text-slate-800 m-0">
+              {search ? `Pencarian "${search}"` : brand ? `Semua Stok Laptop ${brand}` : "Semua Stok Laptop"}
+            </h2>
           </div>
           <div className="w-full sm:w-auto relative z-20">
             <Suspense fallback={<div className="h-10"></div>}>
