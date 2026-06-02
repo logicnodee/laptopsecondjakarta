@@ -11,6 +11,7 @@ export default async function ProductsPage({ searchParams }: { searchParams: Pro
   const max = params.max ? parseInt(params.max as string) : undefined;
   const sort = params.sort as string;
   const brand = params.brand as string;
+  const search = params.search as string;
 
   const whereClause: Prisma.ProductWhereInput = {};
   if (min !== undefined || max !== undefined) {
@@ -20,6 +21,9 @@ export default async function ProductsPage({ searchParams }: { searchParams: Pro
   }
   if (brand) {
     whereClause.brand = { contains: brand };
+  }
+  if (search) {
+    whereClause.title = { contains: search, mode: "insensitive" };
   }
 
   let orderByClause: Prisma.ProductOrderByWithRelationInput = { createdAt: "desc" };
@@ -52,6 +56,7 @@ export default async function ProductsPage({ searchParams }: { searchParams: Pro
   // If using dummy data, apply filters manually for preview purposes
   if (totalProductsInDb === 0) {
     if (brand !== undefined) displayProducts = displayProducts.filter(p => p.brand.toLowerCase() === brand.toLowerCase());
+    if (search) displayProducts = displayProducts.filter(p => p.title.toLowerCase().includes(search.toLowerCase()) || p.brand.toLowerCase().includes(search.toLowerCase()));
     if (min !== undefined) displayProducts = displayProducts.filter(p => p.price >= min);
     if (max !== undefined) displayProducts = displayProducts.filter(p => p.price <= max);
     
@@ -69,7 +74,9 @@ export default async function ProductsPage({ searchParams }: { searchParams: Pro
       <main className="w-full px-4 mt-6 mb-20 flex-grow bg-white">
         <div className="flex flex-col mb-6 border-b border-slate-100 pb-4 gap-4">
           <div>
-            <h1 className="text-xl font-bold text-slate-800 m-0">Produk {brand ? `"${brand}"` : "Semua Laptop"}</h1>
+            <h1 className="text-xl font-bold text-slate-800 m-0">
+              {search ? `Pencarian "${search}"` : brand ? `Produk "${brand}"` : "Semua Laptop"}
+            </h1>
             <p className="text-slate-500 text-xs mt-1">Menampilkan {displayProducts.length} produk</p>
           </div>
           <div className="w-full sm:w-auto relative z-20">

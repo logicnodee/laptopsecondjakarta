@@ -3,7 +3,7 @@
 import { useRouter, useSearchParams } from "next/navigation";
 import { useState, FormEvent } from "react";
 
-export default function ProductFilters() {
+export default function ProductFilters({ basePath = "/products" }: { basePath?: string }) {
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -30,7 +30,7 @@ export default function ProductFilters() {
 
     params.set("sort", sortOrder);
 
-    router.push(`/products?${params.toString()}`);
+    router.push(`${basePath}?${params.toString()}`);
     setIsMobileOpen(false);
   };
 
@@ -38,7 +38,7 @@ export default function ProductFilters() {
     setMinPrice("");
     setMaxPrice("");
     setSortOrder("newest");
-    router.push("/products");
+    router.push(basePath);
     setIsMobileOpen(false);
   };
 
@@ -102,7 +102,7 @@ export default function ProductFilters() {
                 if (window.innerWidth >= 1024) {
                   const params = new URLSearchParams(searchParams.toString());
                   params.set("sort", e.target.value);
-                  router.push(`/products?${params.toString()}`);
+                  router.push(`${basePath}?${params.toString()}`);
                 }
               }}
             >
