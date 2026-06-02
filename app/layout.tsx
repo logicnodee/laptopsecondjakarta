@@ -13,6 +13,7 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://laptopsecondmalang.vercel.app'),
   title: "Laptop Second Malang",
   description: "Pusat laptop second berkualitas tinggi di Malang. Bersih, rapi, dan bergaransi.",
 };
