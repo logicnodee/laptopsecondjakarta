@@ -35,9 +35,17 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
     return { title: "Produk Tidak Ditemukan" };
   }
 
-  const title = `${product.title} - Laptop Second Malang`;
-  const description = `Harga: Rp ${product.price.toLocaleString('id-ID')}. ${product.description || ""}`;
-  const imageUrl = product.images && product.images.length > 0 ? product.images[0].url : "/logo.png";
+  const baseUrl = "https://laptopsecondmalang.vercel.app";
+  let imageUrl = "/logo.png";
+  if (product.images && product.images.length > 0) {
+    const originalUrl = product.images[0].url;
+    // We generated optimized JPEGs (<300KB) for WhatsApp sharing compatibility
+    if (originalUrl.endsWith('.png')) {
+      imageUrl = originalUrl.replace('.png', '_og.jpg');
+    } else {
+      imageUrl = originalUrl;
+    }
+  }
   
   return {
     title,
