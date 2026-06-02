@@ -2,6 +2,7 @@ import Link from "next/link";
 import prisma from "@/lib/prisma";
 import Navbar from "@/components/Navbar";
 import ProductFilters from "@/components/ProductFilters";
+import SearchBar from "@/components/SearchBar";
 import { Prisma } from "@prisma/client";
 import { Suspense } from "react";
 
@@ -117,24 +118,9 @@ export default async function Home({
 
         {/* Search Bar */}
         <div className="mt-6 mb-4">
-          <form action="/" className="relative">
-            <input 
-              type="text" 
-              name="search" 
-              defaultValue={search || ""}
-              placeholder="Cari produk atau brand..." 
-              className="w-full pl-4 pr-12 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all text-sm shadow-sm text-slate-700 bg-slate-50 focus:bg-white" 
-            />
-            <button 
-              type="submit" 
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-blue-600 p-1"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="11" cy="11" r="8"/>
-                <path d="m21 21-4.3-4.3"/>
-              </svg>
-            </button>
-          </form>
+          <Suspense fallback={<div className="h-[46px] rounded-xl bg-slate-100 animate-pulse w-full"></div>}>
+            <SearchBar basePath="/" />
+          </Suspense>
         </div>
       </section>
       
