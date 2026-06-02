@@ -1,7 +1,8 @@
 import Navbar from "@/components/Navbar";
 
-export default function InfoPage({ searchParams }: { searchParams: { topic?: string } }) {
-  const topic = searchParams.topic || 'informasi';
+export default async function InfoPage({ searchParams }: { searchParams: Promise<{ topic?: string }> }) {
+  const resolvedParams = await searchParams;
+  const topic = resolvedParams.topic || 'informasi';
   
   let title = "Informasi";
   if (topic === 'faq') title = "Frequently Asked Questions (FAQ)";
