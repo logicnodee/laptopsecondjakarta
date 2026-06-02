@@ -90,7 +90,7 @@ export default function ProductFilters({ basePath = "/products" }: { basePath?: 
 
         <div className="flex gap-2 w-full sm:w-auto">
           <button type="submit" className="btn btn-primary py-2 text-sm flex-1 sm:flex-none whitespace-nowrap">Terapkan</button>
-          {(currentMin || currentMax || currentSort !== "newest") && (
+          {(currentMin || currentMax || currentSort !== "newest" || searchParams.has("brand") || searchParams.has("search")) && (
             <button type="button" onClick={clearFilters} className="btn btn-outline py-2 text-sm text-red-600 border-red-200 hover:bg-red-50 px-3">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />

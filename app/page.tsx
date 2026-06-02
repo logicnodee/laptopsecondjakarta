@@ -94,25 +94,25 @@ export default async function Home({
         </h3>
         
         <div className="grid grid-cols-3 gap-2">
-          <Link href="/?brand=Asus#stok" scroll={true} className="flex flex-col items-center group cursor-pointer">
-            <div className="w-16 h-16 sm:w-20 sm:h-20 bg-white rounded-xl shadow-sm border border-slate-100 p-2 flex items-center justify-center group-hover:shadow-md transition-shadow">
+          <Link href={brand === "Asus" ? "/#stok" : "/?brand=Asus#stok"} scroll={true} className="flex flex-col items-center group cursor-pointer">
+            <div className={`w-16 h-16 sm:w-20 sm:h-20 bg-white rounded-xl shadow-sm border p-2 flex items-center justify-center group-hover:shadow-md transition-shadow ${brand === 'Asus' ? 'border-blue-500 ring-1 ring-blue-500' : 'border-slate-100'}`}>
               <img src="/asus.png" alt="Asus" className="max-w-full max-h-full object-contain" />
             </div>
-            <span className="text-[11px] mt-2 font-medium text-slate-600 group-hover:text-blue-600">Asus</span>
+            <span className={`text-[11px] mt-2 font-medium group-hover:text-blue-600 ${brand === 'Asus' ? 'text-blue-600 font-bold' : 'text-slate-600'}`}>Asus</span>
           </Link>
 
-          <Link href="/?brand=Lenovo#stok" scroll={true} className="flex flex-col items-center group cursor-pointer">
-            <div className="w-16 h-16 sm:w-20 sm:h-20 bg-white rounded-xl shadow-sm border border-slate-100 p-2 flex items-center justify-center group-hover:shadow-md transition-shadow">
+          <Link href={brand === "Lenovo" ? "/#stok" : "/?brand=Lenovo#stok"} scroll={true} className="flex flex-col items-center group cursor-pointer">
+            <div className={`w-16 h-16 sm:w-20 sm:h-20 bg-white rounded-xl shadow-sm border p-2 flex items-center justify-center group-hover:shadow-md transition-shadow ${brand === 'Lenovo' ? 'border-blue-500 ring-1 ring-blue-500' : 'border-slate-100'}`}>
               <img src="/lenovo.png" alt="Lenovo" className="max-w-full max-h-full object-contain" />
             </div>
-            <span className="text-[11px] mt-2 font-medium text-slate-600 group-hover:text-blue-600">Lenovo</span>
+            <span className={`text-[11px] mt-2 font-medium group-hover:text-blue-600 ${brand === 'Lenovo' ? 'text-blue-600 font-bold' : 'text-slate-600'}`}>Lenovo</span>
           </Link>
 
-          <Link href="/?brand=HP#stok" scroll={true} className="flex flex-col items-center group cursor-pointer">
-            <div className="w-16 h-16 sm:w-20 sm:h-20 bg-white rounded-xl shadow-sm border border-slate-100 p-2 flex items-center justify-center group-hover:shadow-md transition-shadow">
+          <Link href={brand === "HP" ? "/#stok" : "/?brand=HP#stok"} scroll={true} className="flex flex-col items-center group cursor-pointer">
+            <div className={`w-16 h-16 sm:w-20 sm:h-20 bg-white rounded-xl shadow-sm border p-2 flex items-center justify-center group-hover:shadow-md transition-shadow ${brand === 'HP' ? 'border-blue-500 ring-1 ring-blue-500' : 'border-slate-100'}`}>
               <img src="/hp.png" alt="HP" className="max-w-full max-h-full object-contain" />
             </div>
-            <span className="text-[11px] mt-2 font-medium text-slate-600 group-hover:text-blue-600">HP</span>
+            <span className={`text-[11px] mt-2 font-medium group-hover:text-blue-600 ${brand === 'HP' ? 'text-blue-600 font-bold' : 'text-slate-600'}`}>HP</span>
           </Link>
         </div>
 
