@@ -30,8 +30,8 @@ export default function InfoPage({ searchParams }: { searchParams: { topic?: str
                 <p>Kondisi baterai bervariasi karena barang second, namun kami pastikan semua baterai masih dalam keadaan layak pakai dan kami selalu menginformasikan estimasi ketahanan baterai di deskripsi produk.</p>
               </div>
               <div>
-                <h3 className="font-semibold text-slate-800 text-base mb-1">4. Apakah melayani pengiriman ke luar kota?</h3>
-                <p>Ya, kami melayani pengiriman ke seluruh Indonesia menggunakan ekspedisi terpercaya dengan jaminan packing kayu dan asuransi yang aman.</p>
+                <h3 className="font-semibold text-slate-800 text-base mb-1">4. Apakah melayani pengiriman?</h3>
+                <p>Saat ini kami hanya melayani pembelian di area Kota Malang dan Kabupaten Malang. Untuk pengiriman, Anda bisa datang langsung ke toko atau memesan layanan ojek online (Gojek/Grab/Maxim) dari pihak Anda (Customer yang memesan dan menanggung ongkirnya).</p>
               </div>
               <div>
                 <h3 className="font-semibold text-slate-800 text-base mb-1">5. Apakah harga masih bisa dinego?</h3>
