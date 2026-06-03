@@ -15,13 +15,13 @@ const outfit = Outfit({
 export const metadata: Metadata = {
   metadataBase: new URL('https://laptopsecondmalang.vercel.app'),
   title: {
-    default: "Laptop Second Malang | Jual Beli Laptop Bekas Bergaransi",
+    default: "Laptop Second Malang | Beli Laptop Bekas Bergaransi",
     template: "%s | Laptop Second Malang"
   },
-  description: "Pusat laptop second berkualitas tinggi di Malang by Winner Komputer. Bersih, rapi, dan bergaransi. Melayani jual beli dan tukar tambah laptop bekas area Malang.",
-  keywords: ["laptop second malang", "laptop bekas malang", "jual beli laptop malang", "tukar tambah laptop", "winner komputer malang", "laptop bergaransi", "laptop murah malang"],
+  description: "Pusat laptop second berkualitas tinggi di Malang by Winner Komputer. Bersih, rapi, dan bergaransi. Melayani pembelian dan tukar tambah laptop bekas area Malang.",
+  keywords: ["laptop second malang", "laptop bekas malang", "beli laptop malang", "tukar tambah laptop", "winner komputer malang", "laptop bergaransi", "laptop murah malang"],
   openGraph: {
-    title: "Laptop Second Malang | Jual Beli Laptop Bekas Bergaransi",
+    title: "Laptop Second Malang | Beli Laptop Bekas Bergaransi",
     description: "Pusat laptop second berkualitas tinggi di Malang by Winner Komputer. Bersih, rapi, dan bergaransi.",
     url: "https://laptopsecondmalang.vercel.app",
     siteName: "Laptop Second Malang",
