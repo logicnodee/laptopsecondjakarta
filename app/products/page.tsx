@@ -47,10 +47,7 @@ export default async function ProductsPage({ searchParams }: { searchParams: Pro
 
   // Dummy products if db is empty for preview
   let displayProducts = totalProductsInDb > 0 ? products : [
-    { id: 1, title: "Asus ROG Zephyrus G14", brand: "Asus", price: 14500000, ram: "16GB", storage: "1TB SSD", processor: "Ryzen 9 5900HS", condition: "Mulus 95%", status: "Available", images: [{ url: "/merk/asus/asus.png" }] },
-    { id: 2, title: "Lenovo ThinkPad T490", brand: "Lenovo", price: 6200000, ram: "8GB", storage: "512GB SSD", processor: "Intel Core i5-8365U", condition: "Lecet Pemakaian", status: "Available", images: [{ url: "/merk/lenovo/lenovo.png" }] },
-    { id: 3, title: "Asus Vivobook 14", brand: "Asus", price: 5500000, ram: "8GB", storage: "512GB SSD", processor: "Intel Core i3-1115G4", condition: "Mulus 90%", status: "Available", images: [{ url: "/merk/asus/asus2.png" }] },
-    { id: 4, title: "HP Pavilion Gaming 15", brand: "HP", price: 8500000, ram: "16GB", storage: "512GB SSD", processor: "Intel Core i7-9750H", condition: "Normal", status: "Available", images: [{ url: "/merk/hp/hp.png" }] },
+    { id: 2, title: "Lenovo Thinkpad L15 G3 Ryzen 5 Pro 5675U 16/256", brand: "Lenovo", price: 4000000, stock: 160, ram: "16GB", storage: "256GB SSD", processor: "Ryzen 5 Pro 5675U", condition: "Mulus", status: "Available", description: "Lenovo Thinkpad L15 G3 Ryzen 5 Pro 5675U. Kondisi second mulus siap pakai. RAM 16GB dan Storage 256GB SSD. Performa kencang, cocok untuk kantoran, programming, maupun multitasking berat. Harga Rp 4.xxx.xxx", images: [{ url: "/merk/lenovo/lenovo.png" }, { url: "/merk/lenovo/lenovo_og.jpg" }] },
   ];
 
   // If using dummy data, apply filters manually for preview purposes

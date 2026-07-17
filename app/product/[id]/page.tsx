@@ -22,10 +22,7 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
 
   if (!product) {
     const dummyProducts = [
-      { id: 1, title: "Asus ROG Zephyrus G14", brand: "Asus", price: 14500000, description: "Laptop gaming super tipis dan kencang.", images: [{ url: "/merk/asus/asus.png" }] },
-      { id: 2, title: "Lenovo ThinkPad T490", brand: "Lenovo", price: 6200000, description: "Laptop bisnis legendaris.", images: [{ url: "/merk/lenovo/lenovo.png" }] },
-      { id: 3, title: "Asus Vivobook 14", brand: "Asus", price: 5500000, description: "Laptop pelajar dan mahasiswa.", images: [{ url: "/merk/asus/asus2.png" }] },
-      { id: 4, title: "HP Pavilion Gaming 15", brand: "HP", price: 8500000, description: "Laptop gaming budget.", images: [{ url: "/merk/hp/hp.png" }] },
+      { id: 2, title: "Lenovo Thinkpad L15 G3 Ryzen 5 Pro 5675U 16/256", brand: "Lenovo", price: 4000000, description: "Lenovo Thinkpad L15 G3 Ryzen 5 Pro 5675U. Kondisi second mulus siap pakai. RAM 16GB dan Storage 256GB SSD. Performa kencang, cocok untuk kantoran, programming, maupun multitasking berat. Harga Rp 4.xxx.xxx", images: [{ url: "/merk/lenovo/lenovo.png" }, { url: "/merk/lenovo/lenovo_og.jpg" }] },
     ];
     // @ts-ignore
     product = dummyProducts.find(p => p.id === parseInt(id));
@@ -92,10 +89,7 @@ export default async function ProductDetail({ params }: { params: Promise<{ id: 
   // Fallback to dummy data for preview if DB is empty
   if (!product) {
     const dummyProducts = [
-      { id: 1, title: "Asus ROG Zephyrus G14", brand: "Asus", price: 14500000, stock: 1, ram: "16GB", storage: "1TB SSD", processor: "Ryzen 9 5900HS", condition: "Mulus 95%", status: "Available", description: "Laptop gaming super tipis dan kencang. Baterai awet untuk ukuran laptop gaming. Kelengkapan fullset original. Cocok untuk gaming berat dan rendering.", images: [{ url: "/merk/asus/asus.png" }, { url: "/merk/asus/asus2.png" }] },
-      { id: 2, title: "Lenovo ThinkPad T490", brand: "Lenovo", price: 6200000, stock: 1, ram: "8GB", storage: "512GB SSD", processor: "Intel Core i5-8365U", condition: "Lecet Pemakaian", status: "Available", description: "Laptop bisnis legendaris. Keyboard sangat nyaman, body kokoh standar militer. Minus lecet pemakaian di sudut. Mesin 100% normal.", images: [{ url: "/merk/lenovo/lenovo.png" }] },
-      { id: 3, title: "Asus Vivobook 14", brand: "Asus", price: 5500000, stock: 1, ram: "8GB", storage: "512GB SSD", processor: "Intel Core i3-1115G4", condition: "Mulus 90%", status: "Available", description: "Laptop pelajar dan mahasiswa. Ringan, tipis, baterai awet, dan sudah SSD NVMe.", images: [{ url: "/merk/asus/asus2.png" }] },
-      { id: 4, title: "HP Pavilion Gaming 15", brand: "HP", price: 8500000, stock: 1, ram: "16GB", storage: "512GB SSD", processor: "Intel Core i7-9750H", condition: "Normal", status: "Available", description: "Laptop gaming budget. Sudah upgrade RAM ke 16GB. Layar IPS jernih. Ada backlit keyboard.", images: [{ url: "/merk/hp/hp.png" }] },
+      { id: 2, title: "Lenovo Thinkpad L15 G3 Ryzen 5 Pro 5675U 16/256", brand: "Lenovo", price: 4000000, stock: 160, ram: "16GB", storage: "256GB SSD", processor: "Ryzen 5 Pro 5675U", condition: "Mulus", status: "Available", description: "Lenovo Thinkpad L15 G3 Ryzen 5 Pro 5675U. Kondisi second mulus siap pakai. RAM 16GB dan Storage 256GB SSD. Performa kencang, cocok untuk kantoran, programming, maupun multitasking berat. Harga Rp 4.xxx.xxx", images: [{ url: "/merk/lenovo/lenovo.png" }, { url: "/merk/lenovo/lenovo_og.jpg" }] },
     ];
     // @ts-ignore
     product = dummyProducts.find(p => p.id === parseInt(id));
