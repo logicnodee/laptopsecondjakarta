@@ -1,78 +1,8 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Metadata } from "next";
 import prisma from "@/lib/prisma";
 import Navbar from "@/components/Navbar";
 import ProductGallery from "@/components/ProductGallery";
-import ProductActionBar from "@/components/ProductActionBar";
-import ShareButton from "@/components/ShareButton";
-
-export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
-  const { id } = await params;
-  
-  let product = null;
-  try {
-    product = await prisma.product.findUnique({
-      where: { id: parseInt(id) },
-      include: { images: true }
-    });
-  } catch (error) {
-    // ignore
-  }
-
-  if (!product) {
-    const dummyProducts = [
-      { id: 1, title: "Asus ROG Zephyrus G14", brand: "Asus", price: 14500000, description: "Laptop gaming super tipis dan kencang.", images: [{ url: "/merk/asus/asus.png" }] },
-      { id: 2, title: "Lenovo ThinkPad T490", brand: "Lenovo", price: 6200000, description: "Laptop bisnis legendaris.", images: [{ url: "/merk/lenovo/lenovo.png" }] },
-      { id: 3, title: "Asus Vivobook 14", brand: "Asus", price: 5500000, description: "Laptop pelajar dan mahasiswa.", images: [{ url: "/merk/asus/asus2.png" }] },
-      { id: 4, title: "HP Pavilion Gaming 15", brand: "HP", price: 8500000, description: "Laptop gaming budget.", images: [{ url: "/merk/hp/hp.png" }] },
-    ];
-    // @ts-ignore
-    product = dummyProducts.find(p => p.id === parseInt(id));
-  }
-
-  if (!product) {
-    return { title: "Produk Tidak Ditemukan" };
-  }
-
-  const baseUrl = "https://laptopsecondmalang.vercel.app";
-  let imageUrl = "/logo.png";
-  if (product.images && product.images.length > 0) {
-    const originalUrl = product.images[0].url;
-    // We generated optimized JPEGs (<300KB) for WhatsApp sharing compatibility
-    if (originalUrl.endsWith('.png')) {
-      imageUrl = originalUrl.replace('.png', '_og.jpg');
-    } else {
-      imageUrl = originalUrl;
-    }
-  }
-  const title = `${product.title} - Laptop Second Malang`;
-  const description = `Harga: Rp ${product.price.toLocaleString('id-ID')}. ${product.description || ""}`;
-
-  return {
-    title,
-    description,
-    openGraph: {
-      title,
-      description,
-      images: [
-        {
-          url: imageUrl,
-          width: 800,
-          height: 600,
-          alt: product.title,
-        }
-      ],
-      type: "website",
-    },
-    twitter: {
-      card: "summary_large_image",
-      title,
-      description,
-      images: [imageUrl],
-    },
-  };
-}
 
 export default async function ProductDetail({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
@@ -92,10 +22,7 @@ export default async function ProductDetail({ params }: { params: Promise<{ id: 
   // Fallback to dummy data for preview if DB is empty
   if (!product) {
     const dummyProducts = [
-      { id: 1, title: "Asus ROG Zephyrus G14", brand: "Asus", price: 14500000, stock: 1, ram: "16GB", storage: "1TB SSD", processor: "Ryzen 9 5900HS", condition: "Mulus 95%", status: "Available", description: "Laptop gaming super tipis dan kencang. Baterai awet untuk ukuran laptop gaming. Kelengkapan fullset original. Cocok untuk gaming berat dan rendering.", images: [{ url: "/merk/asus/asus.png" }, { url: "/merk/asus/asus2.png" }] },
-      { id: 2, title: "Lenovo ThinkPad T490", brand: "Lenovo", price: 6200000, stock: 1, ram: "8GB", storage: "512GB SSD", processor: "Intel Core i5-8365U", condition: "Lecet Pemakaian", status: "Available", description: "Laptop bisnis legendaris. Keyboard sangat nyaman, body kokoh standar militer. Minus lecet pemakaian di sudut. Mesin 100% normal.", images: [{ url: "/merk/lenovo/lenovo.png" }] },
-      { id: 3, title: "Asus Vivobook 14", brand: "Asus", price: 5500000, stock: 1, ram: "8GB", storage: "512GB SSD", processor: "Intel Core i3-1115G4", condition: "Mulus 90%", status: "Available", description: "Laptop pelajar dan mahasiswa. Ringan, tipis, baterai awet, dan sudah SSD NVMe.", images: [{ url: "/merk/asus/asus2.png" }] },
-      { id: 4, title: "HP Pavilion Gaming 15", brand: "HP", price: 8500000, stock: 1, ram: "16GB", storage: "512GB SSD", processor: "Intel Core i7-9750H", condition: "Normal", status: "Available", description: "Laptop gaming budget. Sudah upgrade RAM ke 16GB. Layar IPS jernih. Ada backlit keyboard.", images: [{ url: "/merk/hp/hp.png" }] },
+      { id: 1, title: "Lenovo Thinkpad L15 G3 Ryzen 5 Pro 5675U 16/256", brand: "Lenovo", price: 4000000, ram: "16GB", storage: "256GB SSD", processor: "Ryzen 5 Pro 5675U", condition: "Normal", status: "Available", description: "Lenovo Thinkpad L15 G3 dengan prosesor Ryzen 5 Pro 5675U yang sangat mumpuni. Body mulus, performa ngebut. Baterai awet.", images: [{ url: "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=1000&q=80" }] },
     ];
     // @ts-ignore
     product = dummyProducts.find(p => p.id === parseInt(id));
@@ -124,52 +51,32 @@ export default async function ProductDetail({ params }: { params: Promise<{ id: 
     <div className="flex flex-col min-h-screen">
       <Navbar />
       
-      <div className="flex flex-col flex-grow pb-36">
-        <div className="container mx-auto px-4 lg:px-8 pt-4 pb-2">
-          <nav className="py-1">
-            <Link href="/" className="inline-flex items-center gap-2 text-slate-500 hover:text-blue-600 transition-colors font-medium text-xs">
-              &larr; Kembali ke Katalog
-            </Link>
-          </nav>
-        </div>
+      <div className="container mx-auto px-4 lg:px-8 py-4 flex-grow">
+        <nav className="py-1 mb-4">
+          <Link href="/" className="inline-flex items-center gap-2 text-slate-500 hover:text-blue-600 transition-colors font-medium text-xs">
+            &larr; Kembali ke Katalog
+          </Link>
+        </nav>
 
-        <div className="w-full">
-          {/* Product Image Gallery Edge-to-Edge */}
-          <ProductGallery images={product.images || []} />
-        </div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-1">
+        {/* Product Image Gallery */}
+        <ProductGallery images={product.images || []} />
 
-        <div className="container mx-auto px-4 lg:px-8 mt-6">
-          {/* Product Info */}
-          <div className="flex flex-col">
-            <div className="mb-4">
-            <div className="flex flex-wrap gap-2 mb-4">
-              <span className="text-xs font-medium border border-slate-200 bg-white px-3 py-1 rounded">
-                {product.brand}
+        {/* Product Info */}
+        <div className="flex flex-col">
+          <div className="mb-4">
+            <div className="flex flex-wrap gap-2 sm:gap-3 mb-3 items-center">
+              <span className="text-[10px] border border-border bg-white px-2 py-0.5 rounded font-semibold text-text-secondary uppercase tracking-wider">{product.brand}</span>
+              <span className="text-[10px] bg-surface border border-border px-2 py-0.5 rounded font-semibold text-text-primary">{product.condition}</span>
+              <span className={`text-[10px] font-bold px-2 py-0.5 rounded ${
+                product.status === 'Available' || product.status === 'Tersedia' 
+                  ? 'bg-green-100 text-green-700' 
+                  : 'bg-red-100 text-red-700'
+              }`}>
+                {product.status === 'Available' ? 'Tersedia' : product.status}
               </span>
-              <span className="text-xs font-medium border border-slate-200 bg-white px-3 py-1 rounded">
-                {product.condition}
-              </span>
-              {product.stock === 0 ? (
-                <span className="text-xs font-medium bg-red-100 text-red-700 px-3 py-1 rounded">
-                  Habis Terjual
-                </span>
-              ) : product.stock === 1 ? (
-                <span className="text-xs font-medium bg-orange-100 text-orange-700 px-3 py-1 rounded">
-                  Stok Terakhir
-                </span>
-              ) : (
-                <span className="text-xs font-medium bg-blue-100 text-blue-700 px-3 py-1 rounded">
-                  Sisa Stok: {product.stock}
-                </span>
-              )}
             </div>
-            <div className="flex justify-between items-start gap-4">
-              <h1 className="text-xl md:text-2xl font-bold text-primary mb-2 leading-tight font-[family-name:var(--font-outfit)]">{product.title}</h1>
-              <ShareButton 
-                title={product.title} 
-                text={`Cek laptop ${product.title} di Laptop Second Malang. Harga: Rp ${product.price.toLocaleString('id-ID')}`} 
-              />
-            </div>
+            <h1 className="text-xl md:text-2xl font-bold text-primary mb-2 leading-tight font-[family-name:var(--font-outfit)]">{product.title}</h1>
             <p className="text-xl font-bold text-text-primary mt-2">
               Rp {product.price.toLocaleString('id-ID')}
             </p>
@@ -201,11 +108,18 @@ export default async function ProductDetail({ params }: { params: Promise<{ id: 
               {product.description || "Tidak ada deskripsi rinci untuk produk ini."}
             </div>
           </div>
-        </div>
+
+          <div className="flex flex-col sm:flex-row gap-3 mt-auto">
+            <Link href={`/checkout/${product.id}`} className="btn btn-primary flex-1 text-center py-3.5">
+              Beli Sekarang
+            </Link>
+            <a href={waLink} target="_blank" rel="noopener noreferrer" className="btn bg-green-600 hover:bg-green-700 text-white flex-1 text-center py-3.5 rounded-lg font-semibold transition-colors">
+              Konsultasi ke WA
+            </a>
+          </div>
         </div>
       </div>
-      
-      <ProductActionBar product={product} waLink={waLink} />
+      </div>
     </div>
   );
 }
