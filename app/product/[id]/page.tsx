@@ -44,7 +44,7 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
     }
   }
   const title = `${product.title} - Laptop Second Malang`;
-  const description = `Harga: Rp ${product.price.toLocaleString('id-ID')}. ${product.description || ""}`;
+  const description = `Harga: Rp ${product.price.toString().charAt(0)}.xxx.xxx. ${product.description || ""}`;
 
   return {
     title,
@@ -104,7 +104,7 @@ export default async function ProductDetail({ params }: { params: Promise<{ id: 
   const waMessage = encodeURIComponent(
     `Halo Admin Laptop Second Malang, saya tertarik dengan produk berikut:\n\n` +
     `*${product.title}*\n` +
-    `Harga: Rp ${product.price.toLocaleString('id-ID')}\n` +
+    `Harga: Rp ${product.price.toString().charAt(0)}.xxx.xxx\n` +
     `Merek: ${product.brand}\n` +
     `Prosesor: ${product.processor}\n` +
     `RAM: ${product.ram}\n` +
@@ -161,11 +161,11 @@ export default async function ProductDetail({ params }: { params: Promise<{ id: 
               <h1 className="text-xl md:text-2xl font-bold text-primary mb-2 leading-tight font-[family-name:var(--font-outfit)]">{product.title}</h1>
               <ShareButton 
                 title={product.title} 
-                text={`Cek laptop ${product.title} di Laptop Second Malang. Harga: Rp ${product.price.toLocaleString('id-ID')}`} 
+                text={`Cek laptop ${product.title} di Laptop Second Malang. Harga: Rp ${product.price.toString().charAt(0)}.xxx.xxx`}
               />
             </div>
             <p className="text-xl font-bold text-text-primary mt-2">
-              Rp {product.price.toLocaleString('id-ID')}
+              Rp {product.price.toString().charAt(0)}.xxx.xxx
             </p>
           </div>
 

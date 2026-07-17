@@ -113,7 +113,7 @@ export default function CheckoutPage() {
                         <h4 className="font-semibold text-slate-800 line-clamp-2 text-sm">{item.title}</h4>
                         <div className="flex justify-between items-center mt-1">
                           <span className="text-xs text-slate-500">{item.quantity}x</span>
-                          <span className="text-sm font-bold text-blue-600">Rp {(item.price * item.quantity).toLocaleString('id-ID')}</span>
+                          <span className="text-sm font-bold text-blue-600">Rp {(item.price * item.quantity).toString().charAt(0)}.xxx.xxx</span>
                         </div>
                       </div>
                     </div>
@@ -123,7 +123,7 @@ export default function CheckoutPage() {
                 <div className="border-t border-slate-200 pt-3">
                   <div className="flex justify-between items-center mb-1 text-sm">
                     <span className="text-slate-500">Total Harga Produk</span>
-                    <span className="font-medium text-slate-800">Rp {totalPrice.toLocaleString('id-ID')}</span>
+                    <span className="font-medium text-slate-800">Rp {totalPrice.toString().charAt(0)}.xxx.xxx</span>
                   </div>
                   <div className="flex justify-between items-center mb-3 text-sm">
                     <span className="text-slate-500">Pengiriman ({deliveryMethod === "Toko" ? "Ambil di Toko" : "Ojek Online"})</span>
@@ -132,7 +132,7 @@ export default function CheckoutPage() {
                   
                   <div className="flex justify-between items-center border-t border-slate-200 pt-3">
                     <span className="font-bold text-base text-slate-800">Total Pembayaran</span>
-                    <span className="font-bold text-lg text-blue-600">Rp {totalPrice.toLocaleString('id-ID')}</span>
+                    <span className="font-bold text-lg text-blue-600">Rp {totalPrice.toString().charAt(0)}.xxx.xxx</span>
                   </div>
                 </div>
               </div>

@@ -43,7 +43,7 @@ export default function CartPage() {
                 <div className="flex flex-col flex-grow justify-between py-1">
                   <div>
                     <h3 className="font-semibold text-slate-800 line-clamp-2 leading-tight mb-1">{item.title}</h3>
-                    <p className="text-sm font-bold text-blue-600">Rp {item.price.toLocaleString('id-ID')}</p>
+                    <p className="text-sm font-bold text-blue-600">Rp {item.price.toString().charAt(0)}.xxx.xxx</p>
                   </div>
                   <div className="flex justify-between items-center mt-2">
                     <span className="text-xs text-slate-500 bg-slate-100 px-2 py-1 rounded">Qty: {item.quantity}</span>
@@ -69,7 +69,7 @@ export default function CartPage() {
               </div>
               <div className="flex justify-between font-bold text-slate-800 text-lg border-t pt-2 mt-2">
                 <span>Total Harga</span>
-                <span className="text-blue-600">Rp {totalPrice.toLocaleString('id-ID')}</span>
+                <span className="text-blue-600">Rp {totalPrice.toString().charAt(0)}.xxx.xxx</span>
               </div>
             </div>
             

@@ -172,7 +172,7 @@ export default async function Home({
                         
                         <div className="mt-auto pt-2 flex justify-between items-center mb-3">
                           <p className="text-sm font-bold text-slate-900 m-0">
-                            Rp {product.price.toLocaleString('id-ID')}
+                            Rp {product.price.toString().charAt(0)}.xxx.xxx
                           </p>
                         </div>
 

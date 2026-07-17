@@ -41,11 +41,15 @@ export default async function InfoPage({ searchParams }: { searchParams: Promise
               </div>
               <div>
                 <h3 className="font-semibold text-slate-800 text-base mb-1">5. Apakah melayani pengiriman?</h3>
-                <p>Saat ini kami hanya melayani pembelian di area Kota Malang dan Kabupaten Malang. Untuk pengiriman, Anda bisa datang langsung ke toko atau memesan layanan ojek online (Gojek/Grab/Maxim) dari pihak Anda (Customer yang memesan dan menanggung ongkirnya).</p>
+                <p>Ya, kami melayani pengiriman. Untuk area Jabodetabek Anda bisa memesan layanan ojek online (Gojek/Grab/Maxim). Untuk pengiriman ke luar kota, kami menggunakan jasa ekspedisi terpercaya.</p>
               </div>
               <div>
                 <h3 className="font-semibold text-slate-800 text-base mb-1">6. Apakah harga masih bisa dinego?</h3>
                 <p>Harga yang tertera sudah merupakan harga terbaik, namun Anda bisa mendapatkan penawaran spesial pada saat kami mengadakan promo tertentu.</p>
+              </div>
+              <div>
+                <h3 className="font-semibold text-slate-800 text-base mb-1">7. Apakah melayani sistem COD (Bayar di Tempat)?</h3>
+                <p>Tentu bisa! Saat ini layanan COD (Cash on Delivery) <strong>khusus berlaku untuk area Jakarta Pusat saja</strong>. Silakan hubungi admin kami via WhatsApp untuk menentukan lokasi dan waktu COD yang disepakati.</p>
               </div>
             </div>
           ) : topic === 'syarat' ? (
