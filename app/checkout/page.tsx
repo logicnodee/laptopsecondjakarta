@@ -142,11 +142,26 @@ export default function CheckoutPage() {
                 <div className="bg-slate-50 p-4 rounded-lg border border-slate-200 mb-4">
                   <p className="text-xs text-slate-500 mb-2">Silakan transfer sesuai dengan total pembayaran ke rekening berikut:</p>
                   <div className="flex items-center gap-3 mt-2">
-                    <div className="w-14 h-8 bg-white border border-slate-200 rounded flex items-center justify-center font-bold text-blue-800 text-xs shadow-sm">
-                      BCA
+                    <div className="w-14 h-8 bg-white border border-slate-200 rounded flex items-center justify-center shadow-sm overflow-hidden p-1">
+                      <img src="/bca.png" alt="BCA" className="max-w-full max-h-full object-contain" />
                     </div>
                     <div>
-                      <p className="font-bold text-base text-slate-800">8161511935</p>
+                      <div className="flex items-center gap-2">
+                        <p className="font-bold text-base text-slate-800">8161511935</p>
+                        <button 
+                          type="button" 
+                          onClick={() => {
+                            navigator.clipboard.writeText("8161511935");
+                            alert("Nomor rekening berhasil disalin!");
+                          }}
+                          className="text-[10px] bg-slate-100 hover:bg-slate-200 text-slate-700 px-2 py-1 rounded border border-slate-200 font-medium flex items-center gap-1 transition-colors"
+                        >
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-3 h-3">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9.75a1.125 1.125 0 0 1-1.125-1.125V7.875c0-.621.504-1.125 1.125-1.125H6.75a9.06 9.06 0 0 1 1.5.124m7.5 10.376h3.375c.621 0 1.125-.504 1.125-1.125V11.25c0-4.46-3.243-8.161-7.5-8.876a9.06 9.06 0 0 0-1.5-.124H9.375c-.621 0-1.125.504-1.125 1.125v3.5m7.5 10.375H9.375a1.125 1.125 0 0 1-1.125-1.125v-9.25m12 6.625v-1.875a3.375 3.375 0 0 0-3.375-3.375h-1.5a1.125 1.125 0 0 1-1.125-1.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H9.75" />
+                          </svg>
+                          Salin
+                        </button>
+                      </div>
                       <p className="text-xs text-slate-500">a.n Mukhammad ayatulloh husaini</p>
                     </div>
                   </div>
