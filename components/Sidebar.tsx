@@ -82,7 +82,7 @@ export default function Sidebar() {
               
               <div className={`overflow-hidden transition-all duration-300 bg-slate-50 ${isInfoOpen ? "max-h-64" : "max-h-0"}`}>
                 <div className="flex flex-col py-2">
-                  <a href="https://maps.app.goo.gl/DE8bEzh1s7V8bHW88" target="_blank" rel="noopener noreferrer" onClick={closeSidebar} className="px-10 py-2.5 text-sm text-slate-600 hover:text-blue-700">Alamat Toko</a>
+                  <a href="https://maps.app.goo.gl/h7K6hrkVmc72TiXG7?g_st=ic" target="_blank" rel="noopener noreferrer" onClick={closeSidebar} className="px-10 py-2.5 text-sm text-slate-600 hover:text-blue-700">Alamat Toko</a>
                   <a href="https://wa.me/62895626752967?text=Halo,%20saya%20ingin%20cek%20ongkir..." target="_blank" rel="noopener noreferrer" onClick={closeSidebar} className="px-10 py-2.5 text-sm text-slate-600 hover:text-blue-700">Cek Ongkir</a>
                   <a href="https://wa.me/62895626752967?text=Halo,%20saya%20ingin%20cek%20resi%20kiriman..." target="_blank" rel="noopener noreferrer" onClick={closeSidebar} className="px-10 py-2.5 text-sm text-slate-600 hover:text-blue-700">Cek Kiriman</a>
                   <Link href="/info?topic=syarat" onClick={closeSidebar} className="px-10 py-2.5 text-sm text-slate-600 hover:text-blue-700">Syarat & Ketentuan</Link>
