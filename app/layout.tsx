@@ -27,11 +27,20 @@ export const metadata: Metadata = {
     siteName: "Laptop Second Malang",
     locale: "id_ID",
     type: "website",
+    images: [
+      {
+        url: "/logo.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Laptop Second Malang Logo",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Laptop Second Malang | Jual Laptop Bekas Bergaransi",
     description: "Pusat laptop second berkualitas tinggi di Malang by Winner Komputer. Bersih, rapi, dan bergaransi.",
+    images: ["/logo.jpg"],
   },
   alternates: {
     canonical: '/',
