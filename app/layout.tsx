@@ -13,18 +13,18 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://laptopsecondmalang.vercel.app'),
+  metadataBase: new URL('https://laptopsecondjakarta.vercel.app'),
   title: {
-    default: "Laptop Second Malang | Jual Laptop Bekas Bergaransi",
-    template: "%s | Laptop Second Malang"
+    default: "Laptop Second Jakarta | Jual Laptop Bekas Bergaransi",
+    template: "%s | Laptop Second Jakarta"
   },
-  description: "Pusat laptop second berkualitas tinggi di Malang by Winner Komputer. Bersih, rapi, dan bergaransi.",
-  keywords: ["laptop second malang", "laptop bekas malang", "jual laptop malang", "winner komputer malang", "laptop bergaransi", "laptop murah malang"],
+  description: "Pusat laptop second berkualitas tinggi di Jakarta by Winner Komputer. Bersih, rapi, dan bergaransi.",
+  keywords: ["laptop second jakarta", "laptop bekas jakarta", "jual laptop jakarta", "winner komputer jakarta", "laptop bergaransi", "laptop murah jakarta"],
   openGraph: {
-    title: "Laptop Second Malang | Jual Laptop Bekas Bergaransi",
-    description: "Pusat laptop second berkualitas tinggi di Malang by Winner Komputer. Bersih, rapi, dan bergaransi.",
-    url: "https://laptopsecondmalang.vercel.app",
-    siteName: "Laptop Second Malang",
+    title: "Laptop Second Jakarta | Jual Laptop Bekas Bergaransi",
+    description: "Pusat laptop second berkualitas tinggi di Jakarta by Winner Komputer. Bersih, rapi, dan bergaransi.",
+    url: "https://laptopsecondjakarta.vercel.app",
+    siteName: "Laptop Second Jakarta",
     locale: "id_ID",
     type: "website",
     images: [
@@ -32,14 +32,14 @@ export const metadata: Metadata = {
         url: "/logo.jpg",
         width: 1200,
         height: 630,
-        alt: "Laptop Second Malang Logo",
+        alt: "Laptop Second Jakarta Logo",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Laptop Second Malang | Jual Laptop Bekas Bergaransi",
-    description: "Pusat laptop second berkualitas tinggi di Malang by Winner Komputer. Bersih, rapi, dan bergaransi.",
+    title: "Laptop Second Jakarta | Jual Laptop Bekas Bergaransi",
+    description: "Pusat laptop second berkualitas tinggi di Jakarta by Winner Komputer. Bersih, rapi, dan bergaransi.",
     images: ["/logo.jpg"],
   },
   alternates: {

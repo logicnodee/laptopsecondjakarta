@@ -19,8 +19,8 @@ export default async function InfoPage({ searchParams }: { searchParams: Promise
           {topic === 'faq' ? (
             <div className="space-y-6">
               <div>
-                <h3 className="font-semibold text-slate-800 text-base mb-1">1. Apakah Laptop Second Malang memiliki toko fisik?</h3>
-                <p>Ya, Laptop Second Malang merupakan bagian dari <strong>Winner Komputer</strong>. Anda bisa datang langsung ke toko fisik kami untuk melihat dan mengecek unit laptop secara langsung di: <br />
+                <h3 className="font-semibold text-slate-800 text-base mb-1">1. Apakah Laptop Second Jakarta memiliki toko fisik?</h3>
+                <p>Ya, Laptop Second Jakarta merupakan bagian dari <strong>Winner Komputer</strong>. Anda bisa datang langsung ke toko fisik kami untuk melihat dan mengecek unit laptop secara langsung di: <br />
                   <strong>ITC Cempaka Mas Lt 4 Blok i No 630</strong><br />
                   Jl. Letjen Suprapto Kec. Kemayoran, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10640<br />
                   <br />

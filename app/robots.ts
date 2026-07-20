@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/admin/'],
     },
-    sitemap: 'https://laptopsecondmalang.vercel.app/sitemap.xml',
+    sitemap: 'https://laptopsecondjakarta.vercel.app/sitemap.xml',
   };
 }

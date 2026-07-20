@@ -32,7 +32,7 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
     return { title: "Produk Tidak Ditemukan" };
   }
 
-  const baseUrl = "https://laptopsecondmalang.vercel.app";
+  const baseUrl = "https://laptopsecondjakarta.vercel.app";
   let imageUrl = "/logo.png";
   if (product.images && product.images.length > 0) {
     const originalUrl = product.images[0].url;
@@ -43,7 +43,7 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
       imageUrl = originalUrl;
     }
   }
-  const title = `${product.title} - Laptop Second Malang`;
+  const title = `${product.title} - Laptop Second Jakarta`;
   const description = `Harga: Rp ${product.price.toString().charAt(0)}.xxx.xxx. ${product.description || ""}`;
 
   return {
@@ -102,7 +102,7 @@ export default async function ProductDetail({ params }: { params: Promise<{ id: 
   // Format WhatsApp message
   const waNumber = "62895626752967"; // Nomor WA Admin Baru
   const waMessage = encodeURIComponent(
-    `Halo Admin Laptop Second Malang, saya tertarik dengan produk berikut:\n\n` +
+    `Halo Admin Laptop Second Jakarta, saya tertarik dengan produk berikut:\n\n` +
     `*${product.title}*\n` +
     `Harga: Rp ${product.price.toString().charAt(0)}.xxx.xxx\n` +
     `Merek: ${product.brand}\n` +
@@ -161,7 +161,7 @@ export default async function ProductDetail({ params }: { params: Promise<{ id: 
               <h1 className="text-xl md:text-2xl font-bold text-primary mb-2 leading-tight font-[family-name:var(--font-outfit)]">{product.title}</h1>
               <ShareButton 
                 title={product.title} 
-                text={`Cek laptop ${product.title} di Laptop Second Malang. Harga: Rp ${product.price.toString().charAt(0)}.xxx.xxx`}
+                text={`Cek laptop ${product.title} di Laptop Second Jakarta. Harga: Rp ${product.price.toString().charAt(0)}.xxx.xxx`}
               />
             </div>
             <p className="text-xl font-bold text-text-primary mt-2">

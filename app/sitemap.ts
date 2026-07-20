@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next';
 import prisma from '@/lib/prisma'; // Assuming prisma is available for dynamic routes
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = 'https://laptopsecondmalang.vercel.app';
+  const baseUrl = 'https://laptopsecondjakarta.vercel.app';
   
   // Static routes
   const staticRoutes = [
